@@ -1,7 +1,18 @@
 .header__form {
   display: block;
   position: absolute;
-  top: 67.81px;
-  right: 14px;
-  max-width: 1500px;
+  top: 65.81px;
+  right: 12px;
+  border-radius: 10px;
+  width: 415px;
+  height: 56px;
+  background-color: #a9cbff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all linear 0.3s;
+  overflow: hidden;
+}
+
+.header__form_closed {
+  height: 0;
+  width: 0;
 }

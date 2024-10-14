@@ -4,11 +4,9 @@
   margin: 0;
   padding: 8px;
   border: none;
-  background-color: #c3dbff;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.form-weight__input {
+.form-weight__inputs {
   box-sizing: border-box;
   font-size: 15px;
   text-align: center;
@@ -18,22 +16,22 @@
   color: #337eca;
 }
 
-.form-weight__input::-webkit-outer-spin-button,
-.form-weight__input::-webkit-inner-spin-button {
+.form-weight__inputs::-webkit-outer-spin-button,
+.form-weight__inputs::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.form-weight__input[type="number"] {
+.form-weight__inputs[type="number"] {
   -moz-appearance: textfield;
 }
 
-.form-weight__input::placeholder {
+.form-weight__inputs::placeholder {
   color: #297fd0;
 }
 
 .form-weight__date {
-  width: 140px;
+  width: 148px;
   font-variant-numeric: tabular-nums;
   height: 40px;
   padding: 0 3px;
