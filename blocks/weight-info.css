@@ -22,7 +22,7 @@
 }
 
 .weight-info__name {
-  margin: 0;
+  margin: 0 0 5px 0;
   color: #0d5297;
   font-size: 26px;
 }
@@ -43,7 +43,7 @@
 }
 
 .weight-info__dates:last-of-type {
-  margin-top: 13px;
+  margin-top: 10px;
 }
 
 .weight-info__date {
