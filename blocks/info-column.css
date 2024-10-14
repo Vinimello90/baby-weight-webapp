@@ -1,0 +1,32 @@
+.info-column__title {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0 0 13px;
+}
+
+.info-column__value {
+  font-size: 36px;
+  font-weight: bold;
+  color: #0d5297;
+  margin: 0;
+}
+
+.info-column_days {
+  grid-area: days;
+  text-align: center;
+}
+
+.info-column_pounds-ounces {
+  grid-area: pounds;
+  text-align: center;
+}
+
+.info-column_kilograms {
+  grid-area: kilograms;
+  text-align: center;
+}
+
+.info-column_percentage {
+  grid-area: percentage;
+  text-align: center;
+}

@@ -25,7 +25,7 @@
             New Weight
           </button>
         </nav>
-        <div class="header__form">
+        <div class="header__form header__form_closed">
           <form class="form-weight">
             <fieldset class="form-weight__fieldset">
               <label for="date" class="form-weight__label-date"
@@ -62,7 +62,60 @@
           </form>
         </div>
       </header>
-      <main class="content"></main>
+      <main class="content">
+        <div class="content__background"></div>
+        <section class="weight-info">
+          <div class="weight-info__container">
+            <div class="weight-info__column-name">
+              <h2 class="weight-info__name">Jack Leo Harper</h2>
+              <button type="button" class="weight-info__btn">
+                <img src="./images/edit-btn.svg" alt="" />
+              </button>
+            </div>
+            <ul class="weight-info__column-dates">
+              <li class="weight-info__dates">
+                <p class="weight-info__date">Weight Date 10/23/2024</p>
+              </li>
+              <li class="weight-info__dates">
+                <p class="weight-info__date">Birthdate 10/13/2024</p>
+              </li>
+            </ul>
+            <div class="info-column info-column_days">
+              <h3 class="info-column__title">days</h3>
+              <p class="info-column__value">10</p>
+            </div>
+            <div class="info-column info-column_pounds-ounces">
+              <h3 class="info-column__title">Pounds + Ounces</h3>
+              <p class="info-column__value">7 lbs 5 oz</p>
+            </div>
+            <div class="info-column info-column_kilograms">
+              <h3 class="info-column__title">kilograms</h3>
+              <p class="info-column__value">3.317 kg</p>
+            </div>
+            <div class="info-column info-column_percentage">
+              <h3 class="info-column__title">
+                Percentage of birth weight change
+              </h3>
+              <p class="info-column__value">1.3%</p>
+              <div class="slide-bar">
+                <input
+                  type="range"
+                  class="slide-bar__infographic"
+                  min="-10"
+                  max="0"
+                  value="0.8"
+                />
+                <div class="slide-bar__percentages">
+                  <p class="slide-bar__minus-ten">-10%</p>
+                  <p class="slide-bar__minus-seven">-7%</p>
+                  <p class="slide-bar__zero">0%</p>
+                </div>
+                <p class="weight-info__percentage-status">normal</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
       <footer class="footer"></footer>
     </div>
   </body>

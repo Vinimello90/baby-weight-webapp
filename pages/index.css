@@ -4,4 +4,7 @@
 @import url("../blocks/header.css");
 @import url("../blocks/weight-form.css");
 @import url("../blocks/nav.css");
-@import url("../blocks/weight-form.css");
+@import url("../blocks/content.css");
+@import url("../blocks/form-weight.css");
+@import url("../blocks/weight-info.css");
+@import url("../blocks/info-column.css");

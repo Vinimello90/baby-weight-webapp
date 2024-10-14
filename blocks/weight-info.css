@@ -1,0 +1,51 @@
+.weight-info {
+}
+
+.weight-info__container {
+  display: grid;
+  max-width: 930px;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: "name . dates" "days pounds kilograms" ". percentage .";
+  place-items: center;
+  row-gap: 36px;
+  margin: 40px auto;
+  padding: 26px;
+  background-color: #e6f0fd;
+  border-radius: 15px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.weight-info__column-name {
+  grid-area: name;
+  place-self: start;
+}
+
+.weight-info__name {
+  margin: 0;
+  color: #0d5297;
+  font-size: 26px;
+}
+
+.weight-info__btn {
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+}
+
+.weight-info__column-dates {
+  grid-area: dates;
+  place-self: end;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.weight-info__dates:last-of-type {
+  margin-top: 13px;
+}
+
+.weight-info__date {
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+.content__background {
+  position: absolute;
+  top: 50px;
+  height: 202px;
+  width: 100%;
+  background-color: #b1d0ff;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  z-index: -1;
+}
