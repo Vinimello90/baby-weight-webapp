@@ -9,7 +9,63 @@
       content="Webapp to register and daily weight tracker baby weight"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Baby Weight Tracker</title>
   </head>
-  <body></body>
+  <body>
+    <div class="page">
+      <header class="header">
+        <nav class="nav">
+          <img src="./images/logo.svg" alt="" class="nav__logo" />
+          <button type="button" class="nav__button">
+            <span
+              ><img src="./images/icon_add.svg" alt="" class="nav__add-icon"
+            /></span>
+            New Weight
+          </button>
+        </nav>
+        <div class="header__form">
+          <form class="form-weight">
+            <fieldset class="form-weight__fieldset">
+              <label for="" class="form-weight__label-date"
+                ><input
+                  type="date"
+                  id="form-weight__date"
+                  name="date"
+                  class="form-weight__input form-weight__date"
+              /></label>
+              <label
+                for="form-weight__input form-weight__pounds"
+                class="form-weight__label-pounds"
+                ><input
+                  type="number"
+                  name="pounds"
+                  id="form-weight__pounds"
+                  class="form-weight__input form-weight__pounds"
+                  placeholder="---"
+                /><span class="form-weight__pounds-abbreviation"
+                  >lbs</span
+                ></label
+              >
+              <label for="" class="form-weight__label"
+                ><input
+                  type="number"
+                  name="ounces"
+                  id="form-weight__ounces"
+                  class="form-weight__input form-weight__ounces"
+                  placeholder="---"
+                /><span class="form-weight__ounces-abbreviation"
+                  >oz</span
+                ></label
+              >
+              <button type="button" class="form-weight__button">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+      </header>
+      <main class="content"></main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
 </html>

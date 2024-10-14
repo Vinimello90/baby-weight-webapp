@@ -1,0 +1,81 @@
+.form-weight__fieldset {
+  display: flex;
+  gap: 7px;
+  margin: 0;
+  padding: 8px;
+  border: none;
+  background-color: #c3dbff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-weight__input {
+  box-sizing: border-box;
+  font-size: 15px;
+  text-align: center;
+  padding: 0 20px;
+  border-radius: 5px;
+  border-color: transparent;
+  color: #337eca;
+}
+
+.form-weight__input::-webkit-outer-spin-button,
+.form-weight__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-weight__input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-weight__input::placeholder {
+  color: #297fd0;
+}
+
+.form-weight__date {
+  width: 140px;
+  font-variant-numeric: tabular-nums;
+  height: 40px;
+  padding: 0 3px;
+}
+
+.form-weight__date::-webkit-calendar-picker-indicator {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23337eca" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+}
+
+.form-weight__pounds {
+  width: 80px;
+  height: 40px;
+}
+
+.form-weight__pounds-abbreviation {
+  color: #297fd0;
+  position: absolute;
+  top: 32px;
+  right: 178px;
+}
+
+.form-weight__ounces {
+  width: 80px;
+  height: 40px;
+}
+
+.form-weight__ounces-abbreviation {
+  color: #297fd0;
+  position: absolute;
+  top: 32px;
+  right: 92px;
+}
+
+.form-weight__button {
+  width: 70px;
+  border-radius: 5px;
+  border-color: transparent;
+  color: #e6f0fd;
+  background-color: #297fd0;
+  transition: background-color linear 0.3s;
+}
+
+.form-weight__button:hover {
+  background-color: #2b99ff;
+}

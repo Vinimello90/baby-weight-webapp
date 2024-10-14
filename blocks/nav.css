@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2b71b7;
+}
+
+.nav__logo {
+  width: 160px;
+  margin: 13px 0 13px 13px;
+}
+
+.nav__button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: auto;
+  background-color: #297fd0;
+  border-color: transparent;
+  padding: 0 13px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #e6f0fd;
+}
