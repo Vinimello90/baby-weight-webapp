@@ -1,0 +1,22 @@
+.float-btn {
+  display: none;
+  position: fixed;
+  bottom: 6.1vh;
+  right: 2.4vh;
+  background-color: #297fd0;
+  border-radius: 8px;
+  border: none;
+  padding: 7.5px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.float-btn__add-icon {
+  width: 30px;
+}
+
+@media screen and (max-width: 640px) {
+  .float-btn {
+    display: flex;
+  }
+}

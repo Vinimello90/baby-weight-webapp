@@ -8,11 +8,19 @@
   height: 56px;
   background-color: #a9cbff;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: all linear 0.3s;
   overflow: hidden;
 }
 
 .header__form_closed {
   height: 0;
   width: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .header__form {
+    position: static;
+    width: 100vw;
+    height: 51px;
+    border-radius: 0;
+  }
 }
