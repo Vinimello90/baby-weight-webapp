@@ -17,11 +17,13 @@
   color: #337eca;
 }
 
-/* .form-weight__inputs::-webkit-outer-spin-button,
-.form-weight__inputs::-webkit-inner-spin-button {
+.form-weight__inputs::-webkit-outer-spin-button,
+.form-weight__inputs::-webkit-inner-spin-button,
+.form-weight__inputs::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
+  opacity: 0;
   margin: 0;
-} */
+}
 
 .form-weight__inputs[type="number"] {
   -moz-appearance: textfield;
@@ -31,11 +33,22 @@
   color: #297fd0;
 }
 
+.form-weight__label-date {
+  position: relative;
+}
+
 .form-weight__date {
   width: 148px;
   font-variant-numeric: tabular-nums;
   height: 40px;
   padding: 0 3px;
+}
+
+.form-weight__calendar-icon {
+  position: absolute;
+  width: 15px;
+  top: 10px;
+  right: 5px;
 }
 
 /* .form-weight__date::-webkit-calendar-picker-indicator {
