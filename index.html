@@ -65,7 +65,7 @@
       <main class="content">
         <div class="content__background"></div>
         <section class="weight-info">
-          <div class="weight-info__container">
+          <div class="weight-info__header">
             <div class="weight-info__column-name">
               <h2 class="weight-info__name">Jack Leo Harper</h2>
               <button type="button" class="weight-info__btn">
@@ -80,6 +80,8 @@
                 <p class="weight-info__date">Birthdate 10/13/2024</p>
               </li>
             </ul>
+          </div>
+          <div class="weight-info__values-container">
             <div class="info-column info-column_days">
               <h3 class="info-column__title">days</h3>
               <p class="info-column__value">10</p>
@@ -92,33 +94,52 @@
               <h3 class="info-column__title">kilograms</h3>
               <p class="info-column__value">3.317 kg</p>
             </div>
-            <div class="info-column info-column_percentage">
-              <h3 class="info-column__title">
-                Percentage of birth weight change
-              </h3>
-              <p class="info-column__value">1.3%</p>
-              <div class="slide-bar">
-                <input
-                  type="range"
-                  class="slide-bar__infographic"
-                  min="-10"
-                  max="0"
-                  value="-7"
-                  disabled
-                />
-                <div class="slide-bar__legend">
-                  <p class="slide-bar__legend-value slide-bar__minus-ten">
-                    -10%
-                  </p>
-                  <p class="slide-bar__legend-value slide-bar__minus-seven">
-                    -7%
-                  </p>
-                  <p class="slide-bar__legend-value slide-bar__zero">0%</p>
-                </div>
-                <p class="slide-bar__status">normal</p>
+          </div>
+          <div class="info-column info-column_percentage">
+            <h3 class="info-column__title">
+              Percentage of birth weight change
+            </h3>
+            <p class="info-column__value">1.3%</p>
+            <div class="slide-bar">
+              <input
+                type="range"
+                class="slide-bar__infographic"
+                min="-10"
+                max="0"
+                value="-7"
+                disabled
+              />
+              <div class="slide-bar__legend">
+                <p class="slide-bar__legend-value slide-bar__minus-ten">-10%</p>
+                <p class="slide-bar__legend-value slide-bar__minus-seven">
+                  -7%
+                </p>
+                <p class="slide-bar__legend-value slide-bar__zero">0%</p>
               </div>
+              <p class="slide-bar__status">normal</p>
             </div>
           </div>
+        </section>
+        <section class="daily-tracker">
+          <h2 class="daily-tracker__title">Daily Weight Tracker</h2>
+          <table class="track-table">
+            <tr class="track-table__headers">
+              <th class="track-table__header-item">Date</th>
+              <th class="track-table__header-item">Days</th>
+              <th class="track-table__header-item">lb + oz</th>
+              <th class="track-table__header-item">kg</th>
+              <th class="track-table__header-item">Change</th>
+            </tr>
+            <tr class="track-table__rows">
+              <td class="track-table__row-item">
+                <button class="track-table__btn">10/13/2024</button>
+              </td>
+              <td class="track-table__row-item">0</td>
+              <td class="track-table__row-item">7 lbs 5 oz</td>
+              <td class="track-table__row-item">3.317 kg</td>
+              <td class="track-table__row-item">0%</td>
+            </tr>
+          </table>
         </section>
       </main>
       <footer class="footer"></footer>

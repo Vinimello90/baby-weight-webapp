@@ -11,22 +11,7 @@
   margin: 0;
 }
 
-.info-column_days {
-  grid-area: days;
-  text-align: center;
-}
-
-.info-column_pounds-ounces {
-  grid-area: pounds;
-  text-align: center;
-}
-
-.info-column_kilograms {
-  grid-area: kilograms;
-  text-align: center;
-}
-
 .info-column_percentage {
-  grid-area: percentage;
+  margin: 0 auto;
   text-align: center;
 }
