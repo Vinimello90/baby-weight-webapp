@@ -21,3 +21,14 @@
   font-size: 14px;
   color: #e6f0fd;
 }
+
+@media screen and (max-width: 640px) {
+  .nav__button {
+    display: none;
+  }
+
+  .nav__logo {
+    width: 130px;
+    margin: 13px auto;
+  }
+}

@@ -7,6 +7,7 @@
 .info-column__value {
   font-size: 36px;
   font-weight: bold;
+  text-align: center;
   color: #0d5297;
   margin: 0;
 }
@@ -14,4 +15,15 @@
 .info-column_percentage {
   margin: 0 auto;
   text-align: center;
+}
+
+@media screen and (max-width: 640px) {
+  .info-column__title {
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+
+  .info-column__value {
+    font-size: 18px;
+  }
 }

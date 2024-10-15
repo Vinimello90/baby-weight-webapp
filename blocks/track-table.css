@@ -35,3 +35,20 @@
   font-weight: 400;
   color: #e6f0fd;
 }
+
+@media screen and (max-width: 640px) {
+  .track-table__header-item {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+
+  .track-table__row-item {
+    font-size: 12px;
+    padding: 8px 2px;
+  }
+
+  .track-table__btn {
+    font-size: 12px;
+    padding: 3px 2px;
+  }
+}

@@ -55,6 +55,43 @@
 
 @media screen and (max-width: 1024px) {
   .weight-info {
-    max-width: 95.5vw;
+    max-width: 94vw;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .weight-info {
+    max-width: 88vw;
+    padding: 15px;
+    margin: 20px auto;
+    gap: 15px;
+  }
+
+  .weight-info__header {
+    flex-direction: column;
+  }
+
+  .weight-info__column-name {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .weight-info__name {
+    font-size: 16px;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .weight-info__btn-icon {
+    width: 19px;
+  }
+
+  .weight-info__dates:last-of-type {
+    margin-top: 6px;
+  }
+
+  .weight-info__date {
+    text-align: left;
+    font-size: 12px;
   }
 }
