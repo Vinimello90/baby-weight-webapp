@@ -44,6 +44,10 @@
   margin: 0;
 }
 
+.info-column__title {
+  text-align: center;
+}
+
 .weight-info__values-container {
   display: flex;
   justify-content: space-around;
