@@ -20,6 +20,16 @@
   font-weight: 600;
   font-size: 14px;
   color: #e6f0fd;
+  transition: background-color linear 0.2s;
+}
+
+.nav__button:hover {
+  cursor: pointer;
+  background-color: #2b99ff;
+}
+
+.span {
+  pointer-events: none;
 }
 
 @media screen and (max-width: 640px) {

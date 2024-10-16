@@ -1,19 +1,19 @@
 .header__form {
-  display: block;
   position: absolute;
   top: 65.81px;
   right: 12px;
   border-radius: 10px;
-  width: 397px;
-  height: 56px;
+  height: 0;
+  width: 0;
   background-color: #a9cbff;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  transition: all linear 0.2s;
 }
 
-.header__form_closed {
-  height: 0;
-  width: 0;
+.header__form_show {
+  width: 397px;
+  height: 56px;
 }
 
 @media screen and (max-width: 640px) {
@@ -22,5 +22,10 @@
     width: 100vw;
     height: 51px;
     border-radius: 0;
+  }
+
+  .header__form_closed {
+    height: 0;
+    width: 0;
   }
 }

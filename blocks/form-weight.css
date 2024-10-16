@@ -70,6 +70,7 @@
   position: absolute;
   top: 20px;
   right: 4px;
+  pointer-events: none;
 }
 
 .form-weight__label-ounces {
@@ -87,6 +88,7 @@
   position: absolute;
   top: 20px;
   right: 4px;
+  pointer-events: none;
 }
 
 .form-weight__button {
