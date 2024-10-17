@@ -12,7 +12,9 @@ window.addEventListener("DOMContentLoaded", setupItems);
 function openForm() {
   resetForm();
   document.querySelector(".header__form").classList.add("header__form_show");
-  document.querySelector(".nav").scrollIntoView();
+  document.querySelector(".nav").scrollIntoView({
+    behavior: "smooth",
+  });
 }
 
 function onClickOutside(e) {
