@@ -20,7 +20,7 @@
   .header__form {
     position: relative;
     width: 100vw;
-    height: 51px;
+    height: 0;
     border-radius: 0;
     top: 0;
     left: 0;
@@ -30,5 +30,6 @@
 
   .header__form_show {
     transform: translateY(0);
+    height: 51px;
   }
 }
