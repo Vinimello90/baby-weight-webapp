@@ -177,7 +177,6 @@ function createItem(fname, days, date, pounds, ounces, kilograms, percent) {
 }
 
 function TrackBtnSelect(e) {
-  g;
   const items = getLocalStorage(fName);
   var selectedDate = e.target.innerHTML;
   selectedDate =
