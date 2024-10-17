@@ -12,6 +12,7 @@ window.addEventListener("DOMContentLoaded", setupItems);
 function openForm() {
   resetForm();
   document.querySelector(".header__form").classList.add("header__form_show");
+  document.querySelector(".nav").scrollIntoView();
 }
 
 function onClickOutside(e) {
@@ -241,16 +242,16 @@ function displayItem() {
   displaySlideValue.value = items[lastItemIndex].percent;
   if (items[lastItemIndex].percent > -7) {
     displaySlideStatus.innerHTML = "Normal";
-    displaySlideStatus.style.backgroundColor = "#00be00";
+    displaySlideStatus.style.backgroundColor = "#0eaa0e";
   }
   if (items[lastItemIndex].percent <= -7) {
     displaySlideStatus.innerHTML = "Warning";
-    displaySlideStatus.style.color = "#2653a8";
+    displaySlideStatus.style.color = "#ffff00";
     displaySlideStatus.style.backgroundColor = "#ffdd00";
   }
   if (items[lastItemIndex].percent <= -10) {
     displaySlideStatus.innerHTML = "Dangerous";
-    displaySlideStatus.style.color = "#e6f0fd";
+    displaySlideStatus.style.color = "#d10000db";
     displaySlideStatus.style.backgroundColor = "red";
   }
 }
