@@ -1,7 +1,9 @@
 .nav {
   display: flex;
+  position: relative;
   justify-content: space-between;
   background-color: #2b71b7;
+  z-index: 1;
 }
 
 .nav__logo {

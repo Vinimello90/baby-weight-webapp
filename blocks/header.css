@@ -18,13 +18,17 @@
 
 @media screen and (max-width: 640px) {
   .header__form {
-    position: static;
+    position: relative;
     width: 100vw;
-    height: 0;
+    height: 51px;
     border-radius: 0;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    transform: translateY(-200%);
   }
 
   .header__form_show {
-    height: 51px;
+    transform: translateY(0);
   }
 }
