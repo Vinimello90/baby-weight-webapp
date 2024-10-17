@@ -1,10 +1,10 @@
 const navButton = document.querySelector(".nav__button");
 const formBtn = document.querySelector(".form-weight__button");
-const floatBtn = document.querySelector(".float-btn");
+const toggleBtn = document.querySelector(".toggle-btn");
 const fName = "Jack Leo Harper";
 const birthDate = new Date("2024-10-13" + "T00:00");
 navButton.addEventListener("click", openForm);
-floatBtn.addEventListener("click", openForm);
+toggleBtn.addEventListener("click", openForm);
 document.addEventListener("click", onClickOutside);
 formBtn.addEventListener("click", submit);
 window.addEventListener("DOMContentLoaded", setupItems);
@@ -24,8 +24,8 @@ function onClickOutside(e) {
     e.target.classList[0] === "form-weight__button" ||
     e.target.classList[0] === "form-weight__fieldset" ||
     e.target.classList[0] === "nav__add-icon" ||
-    e.target.classList[0] === "float-btn" ||
-    e.target.classList[0] === "float-btn__add-icon"
+    e.target.classList[0] === "toggle-btn" ||
+    e.target.classList[0] === "toggle-btn__add-icon"
   ) {
     return;
   }
@@ -112,8 +112,8 @@ function submit() {
     closeForm();
     return;
   }
-  const poundsValue = parseFloat(pounds.value);
-  const ouncesValue = parseFloat(ounces.value);
+  const poundsValue = parsetoggle(pounds.value);
+  const ouncesValue = parsetoggle(ounces.value);
   const totalOunces = poundsValue * 16 + ouncesValue;
   let percentChange = (((totalOunces - bornWeight) / bornWeight) * 100).toFixed(
     2
@@ -125,8 +125,8 @@ function submit() {
     fName,
     days,
     selectedDate,
-    parseFloat(pounds.value),
-    parseFloat(ounces.value),
+    parsetoggle(pounds.value),
+    parsetoggle(ounces.value),
     kilograms,
     percentChange
   );
@@ -134,8 +134,8 @@ function submit() {
     fName,
     days,
     selectedDate,
-    parseFloat(pounds.value),
-    parseFloat(ounces.value),
+    parsetoggle(pounds.value),
+    parsetoggle(ounces.value),
     kilograms,
     percentChange
   );

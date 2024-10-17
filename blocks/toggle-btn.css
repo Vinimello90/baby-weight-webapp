@@ -1,4 +1,4 @@
-.float-btn {
+.toggle-btn {
   display: none;
   position: fixed;
   bottom: 6.1vh;
@@ -9,14 +9,15 @@
   padding: 7.5px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  transition: ;
 }
 
-.float-btn__add-icon {
+.toggle-btn__add-icon {
   width: 30px;
 }
 
 @media screen and (max-width: 640px) {
-  .float-btn {
+  .toggle-btn {
     display: flex;
   }
 }
