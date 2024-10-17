@@ -9,7 +9,19 @@
   padding: 7.5px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  transition: ;
+  animation: bounce 2.5s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .toggle-btn__add-icon {
