@@ -74,8 +74,10 @@ function submit() {
       kilograms,
       percentChange
     );
+    const items = getLocalStorage(fName);
+    const index = items.length - 1;
     resetForm();
-    displayItem();
+    displayItem(index);
     closeForm();
     return;
   }
@@ -107,13 +109,15 @@ function submit() {
       kilograms,
       percentChange
     );
+    const items = getLocalStorage(fName);
+    const index = items.length - 1;
     resetForm();
-    displayItem();
+    displayItem(index);
     closeForm();
     return;
   }
-  const poundsValue = parsetoggle(pounds.value);
-  const ouncesValue = parsetoggle(ounces.value);
+  const poundsValue = parseFloat(pounds.value);
+  const ouncesValue = parseFloat(ounces.value);
   const totalOunces = poundsValue * 16 + ouncesValue;
   let percentChange = (((totalOunces - bornWeight) / bornWeight) * 100).toFixed(
     2
@@ -125,8 +129,8 @@ function submit() {
     fName,
     days,
     selectedDate,
-    parsetoggle(pounds.value),
-    parsetoggle(ounces.value),
+    parseFloat(pounds.value),
+    parseFloat(ounces.value),
     kilograms,
     percentChange
   );
@@ -134,13 +138,15 @@ function submit() {
     fName,
     days,
     selectedDate,
-    parsetoggle(pounds.value),
-    parsetoggle(ounces.value),
+    parseFloat(pounds.value),
+    parseFloat(ounces.value),
     kilograms,
     percentChange
   );
+  const items = getLocalStorage(fName);
+  const index = items.length - 1;
   resetForm();
-  displayItem();
+  displayItem(index);
   closeForm();
 }
 
@@ -166,6 +172,23 @@ function createItem(fname, days, date, pounds, ounces, kilograms, percent) {
               <td class="track-table__row-item">${percent}%</td>
 `;
   itemList.appendChild(element);
+  const TrackBtn = element.querySelector(".track-table__btn");
+  TrackBtn.addEventListener("click", TrackBtnSelect);
+}
+
+function TrackBtnSelect(e) {
+  g;
+  const items = getLocalStorage(fName);
+  var selectedDate = e.target.innerHTML;
+  selectedDate =
+    selectedDate.substring(6, 10) +
+    "-" +
+    selectedDate.substring(3, 5) +
+    "-" +
+    selectedDate.substring(0, 2) +
+    "T03:00:00.000Z";
+  const index = items.findIndex((item) => item.date === selectedDate);
+  displayItem(index);
 }
 
 function setupItems() {
@@ -199,7 +222,7 @@ function setupItems() {
       birtdayItem.kilograms,
       birtdayItem.percent
     );
-    displayItem();
+    displayItem(0);
     return;
   }
   items.map((item) => {
@@ -212,13 +235,13 @@ function setupItems() {
       item.kilograms,
       item.percent
     );
-    displayItem();
+    const index = items.length - 1;
+    displayItem(index);
   });
 }
 
-function displayItem() {
+function displayItem(index) {
   const items = getLocalStorage(fName);
-  const lastItemIndex = items.length - 1;
   const displayName = document.querySelector(".weight-info__name");
   const displayWeightDate = document.querySelectorAll(".weight-info__date")[0];
   const displayBirthDate = document.querySelectorAll(".weight-info__date")[1];
@@ -231,27 +254,28 @@ function displayItem() {
   const displaySlideValue = document.querySelector(".slide-bar__infographic");
   const displaySlideStatus =
     document.getElementsByClassName("slide-bar__status")[0];
-  displayName.innerHTML = items[lastItemIndex].name;
+
+  displayName.innerHTML = items[index].name;
   displayWeightDate.innerHTML =
-    "Weight Date " + new Date(items[lastItemIndex].date).toLocaleDateString();
+    "Weight Date " + new Date(items[index].date).toLocaleDateString();
   displayBirthDate.innerHTML =
     "Birthdate " + new Date(birthDate).toLocaleDateString();
-  displayDays.innerHTML = items[lastItemIndex].days;
+  displayDays.innerHTML = items[index].days;
   displayPoundsOunces.innerHTML =
-    items[lastItemIndex].pounds + " lbs " + items[lastItemIndex].ounces + " oz";
-  displayKilograms.innerHTML = items[lastItemIndex].kilograms + " kg";
-  displayPercent.innerHTML = items[lastItemIndex].percent + "%";
-  displaySlideValue.value = items[lastItemIndex].percent;
-  if (items[lastItemIndex].percent > -7) {
+    items[index].pounds + " lbs " + items[index].ounces + " oz";
+  displayKilograms.innerHTML = items[index].kilograms + " kg";
+  displayPercent.innerHTML = items[index].percent + "%";
+  displaySlideValue.value = items[index].percent;
+  if (items[index].percent > -7) {
     displaySlideStatus.innerHTML = "Normal";
     displaySlideStatus.style.backgroundColor = "#0eaa0e";
   }
-  if (items[lastItemIndex].percent <= -7) {
+  if (items[index].percent <= -7) {
     displaySlideStatus.innerHTML = "Warning";
     displaySlideStatus.style.color = "#e6f0fd";
     displaySlideStatus.style.backgroundColor = "#ffdd00";
   }
-  if (items[lastItemIndex].percent <= -10) {
+  if (items[index].percent <= -10) {
     displaySlideStatus.innerHTML = "Dangerous";
     displaySlideStatus.style.color = "#e6f0fd";
     displaySlideStatus.style.backgroundColor = "#d10000db";
