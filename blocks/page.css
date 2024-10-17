@@ -5,6 +5,6 @@
   font-family: "Poppins";
   background-color: #d1e0ff;
   color: #297fd0;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 0;
 }
