@@ -26,7 +26,7 @@ function onClickOutside(e) {
   ) {
     return;
   }
-  closeForm;
+  closeForm();
 }
 
 function closeForm() {
