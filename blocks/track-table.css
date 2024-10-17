@@ -61,4 +61,11 @@
     padding: 3px 2px;
     width: 76.86px;
   }
+
+  .track-table__rows:last-of-type > .track-table__row-item:first-child {
+    border-bottom-left-radius: 0;
+  }
+  .track-table__rows:last-of-type > .track-table__row-item:last-child {
+    border-bottom-right-radius: 0;
+  }
 }
