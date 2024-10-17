@@ -20,12 +20,11 @@
   .header__form {
     position: static;
     width: 100vw;
-    height: 51px;
+    height: 0;
     border-radius: 0;
   }
 
-  .header__form_closed {
-    height: 0;
-    width: 0;
+  .header__form_show {
+    height: 51px;
   }
 }

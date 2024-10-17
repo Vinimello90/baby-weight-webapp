@@ -19,6 +19,14 @@
   background-color: #c8dcec;
 }
 
+.track-table__rows:last-of-type > .track-table__row-item:first-child {
+  border-bottom-left-radius: 15px;
+}
+
+.track-table__rows:last-of-type > .track-table__row-item:last-child {
+  border-bottom-right-radius: 15px;
+}
+
 .track-table__row-item {
   text-align: center;
   font-size: 14px;
@@ -30,6 +38,7 @@
   background-color: #2b71b7;
   border-color: transparent;
   border-radius: 4px;
+  width: 97.11px;
   padding: 4px 6px;
   font-size: 14px;
   font-weight: 400;
@@ -50,5 +59,6 @@
   .track-table__btn {
     font-size: 12px;
     padding: 3px 2px;
+    width: 76.86px;
   }
 }

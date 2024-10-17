@@ -1,8 +1,10 @@
 const navButton = document.querySelector(".nav__button");
 const formBtn = document.querySelector(".form-weight__button");
+const floatBtn = document.querySelector(".float-btn");
 const fName = "Jack Leo Harper";
 const birthDate = new Date("2024-10-13" + "T00:00");
 navButton.addEventListener("click", openForm);
+floatBtn.addEventListener("click", openForm);
 document.addEventListener("click", onClickOutside);
 formBtn.addEventListener("click", submit);
 window.addEventListener("DOMContentLoaded", setupItems);
@@ -18,10 +20,16 @@ function onClickOutside(e) {
     e.target.classList[0] === "form-weight__inputs" ||
     e.target.classList[0] === "form-weight__button" ||
     e.target.classList[0] === "form-weight__fieldset" ||
-    e.target.classList[0] === "nav__add-icon"
+    e.target.classList[0] === "nav__add-icon" ||
+    e.target.classList[0] === "float-btn" ||
+    e.target.classList[0] === "float-btn__add-icon"
   ) {
     return;
   }
+  closeForm;
+}
+
+function closeForm() {
   document.querySelector(".header__form").classList.remove("header__form_show");
 }
 
@@ -30,12 +38,84 @@ function submit() {
   const selectedDate = new Date(date.value + "T00:00");
   const days =
     (selectedDate.getTime() - birthDate.getTime()) / 1000 / 60 / 60 / 24;
+  if (pounds.value - Math.floor(pounds.value) !== 0 && !ounces.value) {
+    const poundsValue = Math.floor(pounds.value);
+    let ouncesValue = (pounds.value % 1) * 16;
+    const totalOunces = poundsValue * 16 + ouncesValue;
+    ouncesValue =
+      ouncesValue.toString().length > 4
+        ? ouncesValue.toFixed(2)
+        : (pounds.value % 1) * 16;
+    let percentChange = (
+      ((totalOunces - bornWeight) / bornWeight) *
+      100
+    ).toFixed(2);
+
+    let kilograms = totalOunces * 0.0283495;
+    kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
+    createItem(
+      fName,
+      days,
+      selectedDate,
+      poundsValue,
+      ouncesValue,
+      kilograms,
+      percentChange
+    );
+    setLocalStorage(
+      fName,
+      days,
+      selectedDate,
+      poundsValue,
+      ouncesValue,
+      kilograms,
+      percentChange
+    );
+    resetForm();
+    displayItem();
+    closeForm();
+    return;
+  }
+  if (pounds.value && !ounces.value) {
+    const poundsValue = pounds.value;
+    const totalOunces = poundsValue * 16;
+    let percentChange = (
+      ((totalOunces - bornWeight) / bornWeight) *
+      100
+    ).toFixed(2);
+
+    let kilograms = totalOunces * 0.0283495;
+    kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
+    createItem(
+      fName,
+      days,
+      selectedDate,
+      poundsValue,
+      0,
+      kilograms,
+      percentChange
+    );
+    setLocalStorage(
+      fName,
+      days,
+      selectedDate,
+      poundsValue,
+      0,
+      kilograms,
+      percentChange
+    );
+    resetForm();
+    displayItem();
+    closeForm();
+    return;
+  }
   const poundsValue = parseFloat(pounds.value);
   const ouncesValue = parseFloat(ounces.value);
   const totalOunces = poundsValue * 16 + ouncesValue;
   let percentChange = (((totalOunces - bornWeight) / bornWeight) * 100).toFixed(
     2
   );
+
   let kilograms = totalOunces * 0.0283495;
   kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
   createItem(
@@ -58,6 +138,7 @@ function submit() {
   );
   resetForm();
   displayItem();
+  closeForm();
 }
 
 function resetForm(e) {
@@ -86,7 +167,6 @@ function createItem(fname, days, date, pounds, ounces, kilograms, percent) {
 
 function setupItems() {
   var items = getLocalStorage(fName);
-  console.log(items.length);
   if (items.length === 0) {
     const birtdayItem = {
       fName: "Jack Leo Harper",
@@ -134,7 +214,7 @@ function setupItems() {
 }
 
 function displayItem() {
-  items = getLocalStorage(fName);
+  const items = getLocalStorage(fName);
   const lastItemIndex = items.length - 1;
   const displayName = document.querySelector(".weight-info__name");
   const displayWeightDate = document.querySelectorAll(".weight-info__date")[0];
@@ -145,8 +225,10 @@ function displayItem() {
   )[1];
   const displayKilograms = document.querySelectorAll(".info-column__value")[2];
   const displayPercent = document.querySelectorAll(".info-column__value")[3];
+  const displaySlideValue = document.querySelector(".slide-bar__infographic");
+  const displaySlideStatus =
+    document.getElementsByClassName("slide-bar__status")[0];
   displayName.innerHTML = items[lastItemIndex].name;
-  console.log(items);
   displayWeightDate.innerHTML =
     "Weight Date " + new Date(items[lastItemIndex].date).toLocaleDateString();
   displayBirthDate.innerHTML =
@@ -155,7 +237,22 @@ function displayItem() {
   displayPoundsOunces.innerHTML =
     items[lastItemIndex].pounds + " lbs " + items[lastItemIndex].ounces + " oz";
   displayKilograms.innerHTML = items[lastItemIndex].kilograms + " kg";
-  displayPercent.innerHTML = items[lastItemIndex].percent;
+  displayPercent.innerHTML = items[lastItemIndex].percent + "%";
+  displaySlideValue.value = items[lastItemIndex].percent;
+  if (items[lastItemIndex].percent > -7) {
+    displaySlideStatus.innerHTML = "Normal";
+    displaySlideStatus.style.backgroundColor = "#00be00";
+  }
+  if (items[lastItemIndex].percent <= -7) {
+    displaySlideStatus.innerHTML = "Warning";
+    displaySlideStatus.style.color = "#2653a8";
+    displaySlideStatus.style.backgroundColor = "#ffdd00";
+  }
+  if (items[lastItemIndex].percent <= -10) {
+    displaySlideStatus.innerHTML = "Dangerous";
+    displaySlideStatus.style.color = "#e6f0fd";
+    displaySlideStatus.style.backgroundColor = "red";
+  }
 }
 
 function setLocalStorage(name, days, date, pounds, ounces, kilograms, percent) {
