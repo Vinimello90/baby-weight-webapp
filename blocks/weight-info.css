@@ -23,7 +23,7 @@
   line-height: 0.8;
 }
 
-.weight-info__btn {
+.weight-info__edit-btn {
   background-color: transparent;
   border: transparent;
   padding: 0;
@@ -82,7 +82,7 @@
     margin: 0;
   }
 
-  .weight-info__btn-icon {
+  .weight-info__edit-btn-icon {
     width: 19px;
   }
 

@@ -1,13 +1,15 @@
 const navButton = document.querySelector(".nav__button");
 const formBtn = document.querySelector(".form-weight__button");
 const toggleBtn = document.querySelector(".toggle-btn");
+const editBtn = document.querySelector(".weight-info__edit-btn");
 const fName = "Jack Leo Harper";
 const birthDate = new Date("2024-10-13" + "T00:00");
+window.addEventListener("DOMContentLoaded", setupItems);
 navButton.addEventListener("click", openForm);
 toggleBtn.addEventListener("click", openForm);
 document.addEventListener("click", onClickOutside);
 formBtn.addEventListener("click", submit);
-window.addEventListener("DOMContentLoaded", setupItems);
+editBtn.addEventListener("click", editItem);
 
 function openForm() {
   resetForm();
@@ -25,7 +27,9 @@ function onClickOutside(e) {
     e.target.classList[0] === "form-weight__fieldset" ||
     e.target.classList[0] === "nav__add-icon" ||
     e.target.classList[0] === "toggle-btn" ||
-    e.target.classList[0] === "toggle-btn__add-icon"
+    e.target.classList[0] === "toggle-btn__add-icon" ||
+    e.target.classList[0] === "weight-info__edit-btn" ||
+    e.target.classList[0] === "weight-info__edit-icon"
   ) {
     return;
   }
@@ -41,7 +45,10 @@ function submit() {
   const selectedDate = new Date(date.value + "T00:00");
   const days =
     (selectedDate.getTime() - birthDate.getTime()) / 1000 / 60 / 60 / 24;
-  if (pounds.value - Math.floor(pounds.value) !== 0 && !ounces.value) {
+  if (
+    (pounds.value - Math.floor(pounds.value) !== 0 && !ounces.value) ||
+    pounds.value - Math.floor(pounds.value)
+  ) {
     const poundsValue = Math.floor(pounds.value);
     let ouncesValue = (pounds.value % 1) * 16;
     const totalOunces = poundsValue * 16 + ouncesValue;
@@ -53,9 +60,21 @@ function submit() {
       ((totalOunces - bornWeight) / bornWeight) *
       100
     ).toFixed(2);
-
     let kilograms = totalOunces * 0.0283495;
     kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
+    if (formBtn.innerHTML === "Edit") {
+      editLocalStorage(
+        fName,
+        days,
+        selectedDate.toISOString(),
+        poundsValue,
+        ouncesValue,
+        kilograms,
+        percentChange
+      );
+      closeForm();
+      return;
+    }
     createItem(
       fName,
       days,
@@ -91,6 +110,20 @@ function submit() {
 
     let kilograms = totalOunces * 0.0283495;
     kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
+    if (formBtn.innerHTML === "Edit") {
+      poundsValue;
+      editLocalStorage(
+        fName,
+        days,
+        selectedDate.toISOString(),
+        poundsValue,
+        0,
+        kilograms,
+        percentChange
+      );
+      closeForm();
+      return;
+    }
     createItem(
       fName,
       days,
@@ -125,6 +158,19 @@ function submit() {
 
   let kilograms = totalOunces * 0.0283495;
   kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
+  if (formBtn.innerHTML === "Edit") {
+    editLocalStorage(
+      fName,
+      days,
+      selectedDate.toISOString(),
+      poundsValue,
+      ouncesValue,
+      kilograms,
+      percentChange
+    );
+    closeForm();
+    return;
+  }
   createItem(
     fName,
     days,
@@ -152,9 +198,29 @@ function submit() {
 
 function resetForm(e) {
   const newDate = new Date().toISOString().slice(0, 10);
+  document.querySelector(".form-weight__button").innerHTML = "Submit";
   document.getElementById("date").value = newDate;
   document.getElementById("pounds").value = "";
   document.getElementById("ounces").value = "";
+}
+
+function editItem(e) {
+  const items = getLocalStorage(fName);
+  var wDate = document.querySelector(".weight-info__date").innerHTML;
+  wDate =
+    wDate.substring(18, 23) +
+    "-" +
+    wDate.substring(15, 17) +
+    "-" +
+    wDate.substring(12, 14) +
+    "T03:00:00.000Z";
+
+  const index = items.findIndex((item) => item.date === wDate);
+  openForm();
+  document.getElementById("date").value = wDate.substring(0, 10);
+  document.getElementById("pounds").value = items[index].pounds;
+  document.getElementById("ounces").value = items[index].ounces;
+  formBtn.innerHTML = "Edit";
 }
 
 function createItem(fname, days, date, pounds, ounces, kilograms, percent) {
@@ -162,7 +228,8 @@ function createItem(fname, days, date, pounds, ounces, kilograms, percent) {
   const element = document.createElement("tr");
   var localeDate = new Date(date).toLocaleDateString();
   element.classList.add("track-table__rows");
-  element.innerHTML = `
+  element.setAttribute("id", `${localeDate}`);
+  const attr = (element.innerHTML = `
               <td class="track-table__row-item">${days}</td>
               <td class="track-table__row-item">
                 <button class="track-table__btn">${localeDate}</button>
@@ -170,7 +237,7 @@ function createItem(fname, days, date, pounds, ounces, kilograms, percent) {
               <td class="track-table__row-item">${pounds}lbs ${ounces}oz</td>
               <td class="track-table__row-item">${kilograms}kg</td>
               <td class="track-table__row-item">${percent}%</td>
-`;
+`);
   itemList.appendChild(element);
   const TrackBtn = element.querySelector(".track-table__btn");
   TrackBtn.addEventListener("click", TrackBtnSelect);
@@ -192,6 +259,12 @@ function TrackBtnSelect(e) {
 
 function setupItems() {
   var items = getLocalStorage(fName);
+  const elements = items.sort(
+    (a, b) =>
+      (new Date(a.date).getTime() || -Infinity) -
+      (new Date(b.date).getTime() || -Infinity)
+  );
+  console.log(elements);
   if (items.length === 0) {
     const birtdayItem = {
       fName: "Jack Leo Harper",
@@ -294,6 +367,59 @@ function setLocalStorage(name, days, date, pounds, ounces, kilograms, percent) {
   };
   items.push(newItem);
   localStorage.setItem(name, JSON.stringify(items));
+}
+
+function editLocalStorage(
+  name,
+  days,
+  date,
+  pounds,
+  ounces,
+  kilograms,
+  percent
+) {
+  const oldDate = document
+    .querySelectorAll(".weight-info__date")[0]
+    .innerHTML.substring(12);
+  var oldDateFormated =
+    oldDate.substring(6, 10) +
+    "-" +
+    oldDate.substring(3, 5) +
+    "-" +
+    oldDate.substring(0, 2) +
+    "T00:00";
+  oldDateFormated = new Date(oldDateFormated);
+  const element = document.getElementById(
+    `${oldDateFormated.toLocaleDateString()}`
+  );
+  const tableDays = element.children[0];
+  const tableDate = element.children[1].children[0];
+  const tablePoundsOunces = element.children[2];
+  const tableKilograms = element.children[3];
+  const tablePercent = element.children[4];
+  tableDays.innerHTML = days;
+  tableDate.innerHTML = new Date(date).toLocaleDateString();
+  tablePoundsOunces.innerHTML = `${pounds}lbs ${ounces}oz`;
+  tableKilograms.innerHTML = `${kilograms}kg`;
+  tablePercent.innerHTML = `${percent}%`;
+  let items = getLocalStorage(fName);
+  items = items.map((item) => {
+    console.log(item.date === oldDateFormated.toISOString());
+    return item.date === oldDateFormated.toISOString()
+      ? {
+          name: name,
+          days: days,
+          date: date,
+          pounds: pounds,
+          ounces: ounces,
+          kilograms: kilograms,
+          percent: percent,
+        }
+      : item;
+  });
+  localStorage.setItem(fName, JSON.stringify(items));
+  const index = items.findIndex((item) => item.date === date);
+  displayItem(index);
 }
 
 function getLocalStorage(fName) {

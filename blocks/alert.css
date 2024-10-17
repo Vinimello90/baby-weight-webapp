@@ -1,0 +1,28 @@
+.alert {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+}
+
+.alert__text {
+  width: fit-content;
+  padding: 6px 10px;
+  margin: auto auto;
+  border-radius: 15px;
+  font-size: 12px;
+  opacity: 0%;
+  transition: opacity linear 0.3s;
+}
+
+.alert__text_danger {
+  background-color: #ffb1b1d8;
+  color: rgb(190, 0, 0);
+  opacity: 100%;
+}
+
+.alert___text_success {
+  background-color: #8dd68fdb;
+  color: rgb(11, 108, 0);
+  opacity: 100%;
+}

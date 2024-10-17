@@ -41,9 +41,9 @@
 }
 
 .form-weight__date {
-  width: 130px;
+  width: 135px;
   height: 40px;
-  padding: 0 0 0 8px;
+  padding: 0 0 0 7px;
   text-align: left;
 }
 
@@ -114,7 +114,7 @@
   }
 
   .form-weight__date {
-    width: 113px;
+    width: 114px;
     font-size: 12px;
   }
 

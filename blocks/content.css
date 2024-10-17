@@ -1,6 +1,11 @@
+.content {
+  position: relative;
+  z-index: -1;
+}
+
 .content__background {
   position: absolute;
-  top: 50px;
+  top: 0;
   height: 291px;
   width: 100%;
   background-color: #b1d0ff;
