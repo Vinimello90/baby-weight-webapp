@@ -246,13 +246,13 @@ function displayItem() {
   }
   if (items[lastItemIndex].percent <= -7) {
     displaySlideStatus.innerHTML = "Warning";
-    displaySlideStatus.style.color = "#ffff00";
+    displaySlideStatus.style.color = "#6aaaff";
     displaySlideStatus.style.backgroundColor = "#ffdd00";
   }
   if (items[lastItemIndex].percent <= -10) {
     displaySlideStatus.innerHTML = "Dangerous";
-    displaySlideStatus.style.color = "#d10000db";
-    displaySlideStatus.style.backgroundColor = "red";
+    displaySlideStatus.style.color = "#6aaaff";
+    displaySlideStatus.style.backgroundColor = "#d10000db";
   }
 }
 
