@@ -285,6 +285,9 @@ function TrackBtnSelect(e) {
     }
   });
   e.target.parentNode.parentNode.classList.add("track-table__rows_selected");
+  document.querySelector(".nav").scrollIntoView({
+    behavior: "smooth",
+  });
 }
 
 function setupItems() {
