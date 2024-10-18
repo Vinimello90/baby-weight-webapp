@@ -34,6 +34,11 @@
   padding: 6px;
 }
 
+.track-table .track-table__rows_selected {
+  background-color: #2b71b7;
+  color: #e6f0fd;
+}
+
 .track-table__btn {
   background-color: #2b71b7;
   border-color: transparent;

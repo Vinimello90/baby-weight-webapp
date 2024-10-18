@@ -255,6 +255,12 @@ function TrackBtnSelect(e) {
     "T03:00:00.000Z";
   const index = items.findIndex((item) => item.date === selectedDate);
   displayItem(index);
+  document.querySelectorAll(".track-table__rows").forEach((item) => {
+    if (item.classList.contains("track-table__rows_selected")) {
+      item.classList.remove("track-table__rows_selected");
+    }
+  });
+  e.target.parentNode.parentNode.classList.add("track-table__rows_selected");
 }
 
 function setupItems() {
