@@ -48,6 +48,7 @@
   font-size: 14px;
   font-weight: 400;
   color: #e6f0fd;
+  transition: background-color linear 0.3s;
 }
 
 @media screen and (max-width: 640px) {
@@ -72,5 +73,17 @@
   }
   .track-table__rows:last-of-type > .track-table__row-item:last-child {
     border-bottom-right-radius: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .track-table__btn:hover {
+    background-color: #2b99ff;
+    cursor: pointer;
+  }
+
+  .track-table__rows_selected .track-table__btn:hover {
+    background-color: #2b71b7;
+    cursor: default;
   }
 }

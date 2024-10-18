@@ -100,10 +100,6 @@
   transition: background-color linear 0.3s;
 }
 
-.form-weight__button:hover {
-  background-color: #2b99ff;
-}
-
 @media screen and (max-width: 640px) {
   .form-weight__fieldset {
     justify-content: center;
@@ -145,5 +141,12 @@
   .form-weight__button {
     width: 65px;
     font-size: 12px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .form-weight__button:hover {
+    background-color: #2b99ff;
+    cursor: pointer;
   }
 }

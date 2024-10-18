@@ -22,12 +22,7 @@
   font-weight: 600;
   font-size: 14px;
   color: #e6f0fd;
-  transition: background-color linear 0.2s;
-}
-
-.nav__button:hover {
-  cursor: pointer;
-  background-color: #2b99ff;
+  transition: background-color linear 0.3s;
 }
 
 .span {
@@ -42,5 +37,12 @@
   .nav__logo {
     width: 130px;
     margin: 13px auto;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav__button:hover {
+    cursor: pointer;
+    background-color: #2b99ff;
   }
 }
