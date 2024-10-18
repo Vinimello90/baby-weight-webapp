@@ -409,6 +409,9 @@ function TrackBtnSelect(e) {
 }
 
 function setupItems() {
+  const chart = document.getElementById("chart").children;
+  chart.length === 1 ? chart[0].remove() : null;
+  getChart();
   var items = getLocalStorage(fName);
   if (items.length === 0) {
     const birtdayItem = {
