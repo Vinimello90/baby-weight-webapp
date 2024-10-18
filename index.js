@@ -42,11 +42,14 @@ function closeForm() {
   document
     .getElementById("pounds")
     .classList.remove("form-weight__pounds_focus");
+  document.getElementById("date").classList.remove("form-weight__date_focus");
 }
 
 function submit() {
   if (new Date(date.value + "T00:00").getTime() < birthDate.getTime()) {
-    displayAlert("Date is set to before the birthdate!", "danger");
+    displayAlert("Measurement cannot be earlier than birth!", "danger");
+    document.getElementById("date").classList.add("form-weight__date_focus");
+    document.getElementById("date").focus();
     return;
   }
 
@@ -115,7 +118,9 @@ function submit() {
       (item) => item.date === selectedDate.toISOString()
     );
     if (dateCheck > -1) {
-      displayAlert("Error: The date has already been used!", "danger");
+      displayAlert("Weight date already added", "danger");
+      document.getElementById("date").classList.add("form-weight__date_focus");
+      document.getElementById("date").focus();
       closeForm();
       return;
     }
@@ -156,7 +161,7 @@ function submit() {
       .getElementById(`${selectedDate.toISOString()}`)
       .classList.add("track-table__rows_selected");
     closeForm();
-    displayAlert("New Entry added!", "success");
+    displayAlert("New weight added!", "success");
     return;
   }
   if (pounds.value && !ounces.value) {
@@ -204,7 +209,9 @@ function submit() {
       (item) => item.date === selectedDate.toISOString()
     );
     if (dateCheck > -1) {
-      displayAlert("Error: The date has already been used!", "danger");
+      displayAlert("Date already in use!", "danger");
+      document.getElementById("date").classList.add("form-weight__date_focus");
+      document.getElementById("date").focus();
       closeForm();
       return;
     }
@@ -245,7 +252,7 @@ function submit() {
       .getElementById(`${selectedDate.toISOString()}`)
       .classList.add("track-table__rows_selected");
     closeForm();
-    displayAlert("New Entry added!", "success");
+    displayAlert("New weight added!", "success");
     return;
   }
   const poundsValue = parseFloat(pounds.value);
@@ -292,7 +299,9 @@ function submit() {
   );
   console.log(dateCheck);
   if (dateCheck > -1) {
-    displayAlert("Error: The date has already been used!", "danger");
+    displayAlert("Date already in use!", "danger");
+    document.getElementById("date").classList.add("form-weight__date_focus");
+    document.getElementById("date").focus();
     closeForm();
     return;
   }
@@ -324,7 +333,7 @@ function submit() {
     .getElementById(`${selectedDate.toISOString()}`)
     .classList.add("track-table__rows_selected");
   closeForm();
-  displayAlert("New Entry added!", "success");
+  displayAlert("New weight added!", "success");
 }
 
 function resetForm(e) {
@@ -474,7 +483,7 @@ function displayItem(index) {
   displayWeightDate.innerHTML =
     "Weight Date " + new Date(items[index].date).toLocaleDateString();
   displayBirthDate.innerHTML =
-    "Birthdate " + new Date(birthDate).toLocaleDateString();
+    "Birth " + new Date(birthDate).toLocaleDateString();
   displayDays.innerHTML = items[index].days;
   displayPoundsOunces.innerHTML =
     items[index].pounds + " lbs " + items[index].ounces + " oz";

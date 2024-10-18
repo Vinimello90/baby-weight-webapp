@@ -17,12 +17,14 @@
 
 .alert__text_danger {
   background-color: #ffb1b1d8;
+  border: solid 1px rgb(190, 0, 0);
   color: rgb(190, 0, 0);
   opacity: 100%;
 }
 
 .alert__text_success {
   background-color: #8dd68fdb;
+  border: solid 1px rgb(11, 108, 0);
   color: rgb(11, 108, 0);
   opacity: 100%;
 }

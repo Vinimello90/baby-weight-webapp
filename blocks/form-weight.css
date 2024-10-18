@@ -47,6 +47,11 @@
   text-align: left;
 }
 
+.form-weight__date_focus:focus {
+  border-color: red;
+  outline: none;
+}
+
 .form-weight__calendar-icon {
   position: absolute;
   width: 15px;
