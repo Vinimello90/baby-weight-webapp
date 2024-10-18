@@ -7,7 +7,7 @@
 
 .alert__text {
   width: fit-content;
-  padding: 6px 10px;
+  padding: 6px 15px;
   margin: auto auto;
   border-radius: 15px;
   font-size: 12px;
@@ -21,7 +21,7 @@
   opacity: 100%;
 }
 
-.alert___text_success {
+.alert__text_success {
   background-color: #8dd68fdb;
   color: rgb(11, 108, 0);
   opacity: 100%;
