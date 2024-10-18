@@ -39,18 +39,23 @@ function onClickOutside(e) {
 
 function closeForm() {
   document.querySelector(".header__form").classList.remove("header__form_show");
+  document
+    .getElementById("pounds")
+    .classList.remove("form-weight__pounds_focus");
 }
 
 function submit() {
   if (new Date(date.value + "T00:00").getTime() < birthDate.getTime()) {
-    displayAlert("Error: Can only be added after the birthdate", "danger");
-    closeForm();
+    displayAlert("Date is set to before the birthdate!", "danger");
     return;
   }
 
   if (!pounds.value) {
-    displayAlert("Pounds is required to submit!", "danger");
-    closeForm();
+    displayAlert("No weight was specified!", "danger");
+    document
+      .getElementById("pounds")
+      .classList.add("form-weight__pounds_focus");
+    document.getElementById("pounds").focus();
     return;
   }
   let items = getLocalStorage(fName);

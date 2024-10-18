@@ -64,6 +64,11 @@
   height: 40px;
 }
 
+.form-weight__pounds_focus:focus {
+  border-color: red;
+  outline: none;
+}
+
 .form-weight__pounds-abbreviation {
   font-size: 14px;
   color: #297fd0;
