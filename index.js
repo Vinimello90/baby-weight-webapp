@@ -97,6 +97,14 @@ function submit() {
     const index = items.length - 1;
     resetForm();
     displayItem(index);
+    document.querySelectorAll(".track-table__rows").forEach((item) => {
+      if (item.classList.contains("track-table__rows_selected")) {
+        item.classList.remove("track-table__rows_selected");
+      }
+    });
+    document
+      .querySelectorAll(".track-table__rows")
+      [index].classList.add("track-table__rows_selected");
     closeForm();
     return;
   }
@@ -146,6 +154,14 @@ function submit() {
     const index = items.length - 1;
     resetForm();
     displayItem(index);
+    document.querySelectorAll(".track-table__rows").forEach((item) => {
+      if (item.classList.contains("track-table__rows_selected")) {
+        item.classList.remove("track-table__rows_selected");
+      }
+    });
+    document
+      .querySelectorAll(".track-table__rows")
+      [index].classList.add("track-table__rows_selected");
     closeForm();
     return;
   }
@@ -193,6 +209,14 @@ function submit() {
   const index = items.length - 1;
   resetForm();
   displayItem(index);
+  document.querySelectorAll(".track-table__rows").forEach((item) => {
+    if (item.classList.contains("track-table__rows_selected")) {
+      item.classList.remove("track-table__rows_selected");
+    }
+  });
+  document
+    .querySelectorAll(".track-table__rows")
+    [index].classList.add("track-table__rows_selected");
   closeForm();
 }
 
@@ -301,6 +325,9 @@ function setupItems() {
       birtdayItem.percent
     );
     displayItem(0);
+    document
+      .querySelectorAll(".track-table__rows")[0]
+      .classList.add("track-table__rows_selected");
     return;
   }
   items.map((item) => {
@@ -316,6 +343,10 @@ function setupItems() {
     const index = items.length - 1;
     displayItem(index);
   });
+  const index = items.length - 1;
+  document
+    .querySelectorAll(".track-table__rows")
+    [index].classList.add("track-table__rows_selected");
 }
 
 function displayItem(index) {
