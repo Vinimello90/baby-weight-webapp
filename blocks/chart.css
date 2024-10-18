@@ -1,0 +1,55 @@
+.chart {
+  padding: 20px;
+}
+
+.chart__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0d5297;
+  text-align: center;
+}
+
+.chart__container {
+  width: 95%;
+  font-size: 5px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 20px;
+}
+
+text {
+  font-size: 14px;
+}
+
+.chart__legends {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 50px;
+}
+
+.chart__legend {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.chart__square {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.chart__square_weight-change {
+  background-color: #297fd0;
+}
+
+.chart__square_warning {
+  background-color: #ffd900;
+}
+
+.chart__square_dangerous {
+  background-color: #d10000db;
+}

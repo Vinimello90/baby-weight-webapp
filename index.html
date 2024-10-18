@@ -11,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <script
+      src="https://cdn.anychart.com/releases/8.13.0/js/anychart-base.min.js"
+      type="text/javascript"
+    ></script>
     <title>Baby Weight Tracker</title>
   </head>
   <body>
@@ -142,6 +146,25 @@
             </tr>
           </table>
         </section>
+        <section class="chart">
+          <h2 class="chart__title">Percentage of birth weight change</h2>
+          <div class="chart__container" id="chart"></div>
+          <div class="chart__legends">
+            <p class="chart__legend">
+              <span class="chart__square chart__square_weight-change"></span
+              >Weight Change
+            </p>
+            <p class="chart__legend">
+              <span class="chart__square chart__square_warning"></span>Warning
+            </p>
+            <p class="chart__legend">
+              <span
+                class="chart__square chart__square chart__square_dangerous"
+              ></span
+              >Dangerous
+            </p>
+          </div>
+        </section>
         <button class="toggle-btn">
           <img
             src="./images/icon_add.svg"
@@ -155,5 +178,6 @@
       </footer>
     </div>
     <script src="./index.js" charset="UTF-8"></script>
+    <script src="./chart.js" charset="UTF-8"></script>
   </body>
 </html>
