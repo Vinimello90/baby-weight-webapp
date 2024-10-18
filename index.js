@@ -85,7 +85,24 @@ function submit() {
         kilograms,
         percentChange
       );
+      document.querySelectorAll(".track-table__rows").forEach((item) => {
+        item.remove();
+      });
+      setupItems();
       closeForm();
+      document.querySelectorAll(".track-table__rows").forEach((item) => {
+        if (item.classList.contains("track-table__rows_selected")) {
+          item.classList.remove("track-table__rows_selected");
+        }
+      });
+      document
+        .getElementById(`${selectedDate.toISOString()}`)
+        .classList.add("track-table__rows_selected");
+      items = getLocalStorage(fName);
+      const index = items.findIndex(
+        (item) => item.date === selectedDate.toISOString()
+      );
+      displayItem(index);
       displayAlert("Entry Successfully Updated", "success");
       return;
     }
@@ -157,7 +174,24 @@ function submit() {
         kilograms,
         percentChange
       );
+      document.querySelectorAll(".track-table__rows").forEach((item) => {
+        item.remove();
+      });
+      setupItems();
       closeForm();
+      document.querySelectorAll(".track-table__rows").forEach((item) => {
+        if (item.classList.contains("track-table__rows_selected")) {
+          item.classList.remove("track-table__rows_selected");
+        }
+      });
+      document
+        .getElementById(`${selectedDate.toISOString()}`)
+        .classList.add("track-table__rows_selected");
+      items = getLocalStorage(fName);
+      const index = items.findIndex(
+        (item) => item.date === selectedDate.toISOString()
+      );
+      displayItem(index);
       displayAlert("Entry Successfully Updated", "success");
       return;
     }
@@ -227,7 +261,24 @@ function submit() {
       kilograms,
       percentChange
     );
+    document.querySelectorAll(".track-table__rows").forEach((item) => {
+      item.remove();
+    });
+    setupItems();
     closeForm();
+    document.querySelectorAll(".track-table__rows").forEach((item) => {
+      if (item.classList.contains("track-table__rows_selected")) {
+        item.classList.remove("track-table__rows_selected");
+      }
+    });
+    document
+      .getElementById(`${selectedDate.toISOString()}`)
+      .classList.add("track-table__rows_selected");
+    items = getLocalStorage(fName);
+    const index = items.findIndex(
+      (item) => item.date === selectedDate.toISOString()
+    );
+    displayItem(index);
     displayAlert("Entry Successfully Updated", "success");
     return;
   }
@@ -517,6 +568,11 @@ function editLocalStorage(
         }
       : item;
   });
+  items = items.sort(
+    (a, b) =>
+      (new Date(a.date).getTime() || -Infinity) -
+      (new Date(b.date).getTime() || -Infinity)
+  );
   localStorage.setItem(fName, JSON.stringify(items));
   const index = items.findIndex((item) => item.date === date);
   displayItem(index);
