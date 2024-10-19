@@ -1,5 +1,5 @@
 var data = [["0 Day", 0, -7, -10]];
-document.addEventListener("touchstart", handler, { passive: true });
+
 function getChart() {
   const items = getLocalStorage(fName);
   items.forEach((item) => {
