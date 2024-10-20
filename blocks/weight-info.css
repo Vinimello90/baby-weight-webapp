@@ -1,5 +1,5 @@
 .weight-info {
-  display: flex;
+  display: none;
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 15px;
@@ -9,6 +9,10 @@
   padding: 26px;
   background-color: #e6f0fd;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.weight-info_show {
+  display: flex;
 }
 
 .weight-info__header {
@@ -27,6 +31,10 @@
   background-color: transparent;
   border: transparent;
   padding: 0;
+}
+
+.weight-info__edit-btn_hidden {
+  opacity: 0;
 }
 
 .weight-info__column-dates {

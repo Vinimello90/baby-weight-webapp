@@ -1,9 +1,14 @@
 .daily-tracker {
+  display: none;
   max-width: 980px;
   background-color: #e6f0fd;
   border-radius: 15px;
   margin: 0 auto 40px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.daily-tracker_show {
+  display: block;
 }
 
 .daily-tracker__title {

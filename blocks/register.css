@@ -1,0 +1,106 @@
+.register__container {
+  box-sizing: border-box;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 26px;
+  background-color: #a9cbff;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.register__title {
+  color: #297fd0;
+  text-align: center;
+  margin: 0;
+}
+
+.register__description {
+  color: #297fd0;
+  text-align: center;
+}
+
+.register__fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: #297fd0;
+}
+
+.register__name {
+  display: flex;
+  width: 100%;
+  column-gap: 10px;
+}
+
+.register__label {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.register__label_birthday {
+  width: fit-content;
+}
+.register__input {
+  height: 40px;
+  width: 100%;
+  color: #297fd0;
+  padding: 5px 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: none;
+}
+
+.register__input::placeholder {
+  color: #9cc6ed;
+}
+
+.register__info-container {
+  display: flex;
+
+  gap: 10px;
+}
+
+.register__weight-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.register__input_birthday {
+  width: 135px;
+}
+.register__input_kilograms-pounds {
+  width: 100%;
+}
+.register__input_kilograms-pounds::placeholder {
+  color: #297fd0;
+}
+
+.register__input_ounces {
+  width: 100%;
+}
+
+.register__input_ounces::placeholder {
+  color: #297fd0;
+}
+
+.register__weight-type {
+  width: 125px;
+}
+
+.register__btn {
+  grid-area: button;
+  width: 70px;
+  height: 40px;
+  align-self: flex-end;
+  border-radius: 5px;
+  border-color: transparent;
+  color: #e6f0fd;
+  background-color: #297fd0;
+  transition: background-color linear 0.3s;
+}

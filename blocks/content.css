@@ -5,7 +5,7 @@
 
 .content__background {
   position: absolute;
-  top: 0;
+  top: -80px;
   height: 291px;
   width: 100%;
   background-color: #b1d0ff;

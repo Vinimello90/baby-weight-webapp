@@ -30,6 +30,10 @@
 
 @media screen and (max-width: 640px) {
   .toggle-btn {
+    display: none;
+  }
+
+  .toggle-btn_show {
     display: flex;
   }
 }

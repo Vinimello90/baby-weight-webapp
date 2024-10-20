@@ -1,4 +1,5 @@
 .chart {
+  display: none;
   padding: 20px;
   max-width: 980px;
   box-sizing: border-box;
@@ -6,6 +7,10 @@
   border-radius: 15px;
   margin: 0 auto 80px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chart_show {
+  display: block;
 }
 
 .chart__title {
@@ -69,7 +74,7 @@ text {
   }
 
   .chart__container {
-    height: 200px;
+    height: 180px;
   }
 
   .chart__container text {
