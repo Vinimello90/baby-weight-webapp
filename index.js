@@ -435,7 +435,7 @@ function setupItems() {
                     <input
                       type="text"
                       id="fname"
-                      class="register__input register__input_fname"
+                      class="register__inputs register__inputs_fname"
                       placeholder="First Name"
                     />
                   </label>
@@ -447,25 +447,12 @@ function setupItems() {
                     <input
                       type="text"
                       id="lname"
-                      class="register__input register__input_lname"
+                      class="register__inputs register__inputs_lname"
                       placeholder="Last Name"
                     />
                   </label>
                 </div>
                 <div class="register__info-container">
-                  <label
-                    for="birthday"
-                    class="register__label register__label_birthday"
-                  >
-                    Birthday*
-                    <input
-                      type="date"
-                      id="birthday"
-                      name="birthday"
-                      class="register__input register__input_birthday"
-                      value="2024-10-19"
-                    />
-                  </label>
                   <label
                     for="weight"
                     class="register__label register__label_weight"
@@ -476,19 +463,25 @@ function setupItems() {
                         id="weight"
                         type="number"
                         name="weight"
-                        class="register__input register__input_kilograms-pounds"
+                        class="register__inputs register__inputs_kilograms-pounds"
                         placeholder="---"
                       />
+                      <span class="register__pounds-abbreviation"
+                  >lbs</span
+                >
                       <input
                         type="number"
                         id="ounces"
                         name="ounces"
-                        class="register__input register__input_ounces"
+                        class="register__inputs register__inputs_ounces"
                         placeholder="---"
                       />
+                      <span class="register__ounces-abbreviation"
+                  >oz</span
+                >
                       <select
                         id="type"
-                        class="register__input register__weight-type"
+                        class="register__inputs register__inputs_weight-type"
                         name="type"
                       >
                         <option value="pounds">Pounds</option>
@@ -496,8 +489,26 @@ function setupItems() {
                       </select>
                     </div>
                   </label>
-                  <button type="button" class="register__btn">Submit</button>
-                </div>
+                  <label
+  for="birthday"
+  class="register__label register__label_birthday"
+>
+  Birthday*
+  <input
+    type="date"
+    id="birthday"
+    name="birthday"
+    class="register__inputs register__inputs_birthday"
+    value="2024-10-19"
+  />
+  <span
+><img
+  src="./images/calendar-regular.svg"
+  alt=""
+  class="register__calendar-icon" /></span>
+</label>
+<button type="button" class="register__btn">Submit</button>
+                  </div>
               </fieldset>
             </form>
 `;
