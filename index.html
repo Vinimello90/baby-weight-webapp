@@ -9,7 +9,7 @@
       content="Webapp to register and daily weight tracker baby weight"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./pages/index.css" />
     <script
       src="https://cdn.anychart.com/releases/8.13.0/js/anychart-base.min.js"
@@ -23,27 +23,13 @@
         <nav class="nav">
           <img src="./images/logo.svg" alt="" class="nav__logo" />
           <button type="button" class="nav__button">
-            <span
-              ><img src="./images/icon_add.svg" alt="" class="nav__add-icon"
-            /></span>
+            <img src="./images/icon_add.svg" alt="" class="nav__add-icon" />
             New Weight
           </button>
         </nav>
         <div class="header__form">
           <form class="form-weight">
             <fieldset class="form-weight__fieldset">
-              <label for="date" class="form-weight__label-date"
-                ><input
-                  type="date"
-                  id="date"
-                  class="form-weight__inputs form-weight__date"
-                  value="2024-10-15"
-                  required /><span
-                  ><img
-                    src="./images/calendar-regular.svg"
-                    alt=""
-                    class="form-weight__calendar-icon" /></span
-              ></label>
               <label for="pounds" class="form-weight__label-pounds"
                 ><input
                   type="number"
@@ -60,10 +46,28 @@
                   id="ounces"
                   class="form-weight__inputs form-weight__ounces"
                   placeholder="---"
-                /><span class="form-weight__ounces-abbreviation"
-                  >oz</span
-                ></label
+                /><span class="form-weight__ounces-abbreviation">oz</span>
+              </label>
+              <select
+                id="form_weight_units"
+                class="form-weight__inputs form-weight__inputs_weight-units"
+                name="form_weight_units"
               >
+                <option value="pounds">Pounds</option>
+                <option value="kilograms">Kilograms</option>
+              </select>
+              <label for="date" class="form-weight__label-date"
+                ><input
+                  type="date"
+                  id="date"
+                  class="form-weight__inputs form-weight__date"
+                  value="2024-10-15"
+                  required /><span
+                  ><img
+                    src="./images/calendar-regular.svg"
+                    alt=""
+                    class="form-weight__calendar-icon" /></span
+              ></label>
               <button type="button" class="form-weight__button">Submit</button>
             </fieldset>
           </form>
@@ -179,8 +183,8 @@
         <p class="footer__copyright">&#169; 2024 - Vinicius B. Mello</p>
       </footer>
     </div>
-    <script src="./index.js" charset="UTF-8"></script>
-    <script src="./chart.js" charset="UTF-8"></script>
-    <script src="./register.js" charset="UTF-8"></script>
+    <script src="./javascript/index.js" charset="UTF-8"></script>
+    <script src="./javascript/chart.js" charset="UTF-8"></script>
+    <script src="./javascript/register.js" charset="UTF-8"></script>
   </body>
 </html>

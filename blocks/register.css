@@ -10,6 +10,7 @@
 
 .register__title {
   color: #297fd0;
+  font-size: 16px;
   text-align: center;
   margin: 0;
 }
@@ -17,6 +18,7 @@
 .register__description {
   color: #297fd0;
   text-align: center;
+  font-size: 14px;
 }
 
 .register__fieldset {
@@ -38,6 +40,7 @@
 .register__label {
   display: flex;
   position: relative;
+  font-size: 14px;
   flex-direction: column;
 }
 
@@ -52,11 +55,24 @@
 .register__label_birthday {
   width: fit-content;
 }
+
+.register__info-container {
+  display: flex;
+  gap: 15px 10px;
+}
+
+.register__weight-container {
+  display: flex;
+  gap: 15px 10px;
+  width: 100%;
+}
+
 .register__inputs {
   height: 45px;
+  font-size: 14px;
   width: 100%;
   color: #297fd0;
-  padding: 5px 12px;
+  padding: 5px 10px;
   margin-top: 5px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -75,23 +91,27 @@
   color: #9cc6ed;
 }
 
-.register__info-container {
-  display: flex;
-  gap: 15px 10px;
+.register__inputs_fname_focus:focus {
+  border: solid 2px red;
+  outline: none;
 }
 
-.register__weight-container {
-  display: flex;
-  gap: 15px 10px;
-  width: 100%;
+.register__inputs_lname_focus:focus {
+  border: solid 2px red;
+  outline: none;
 }
 
-.register__inputs_kilograms-pounds {
+.register__inputs_weight {
   width: 80px;
   text-align: center;
 }
-.register__inputs_kilograms-pounds::placeholder {
+.register__inputs_weight::placeholder {
   color: #297fd0;
+}
+
+.register__inputs_weight_focus:focus {
+  border: solid 2px red;
+  outline: none;
 }
 
 .register__inputs_ounces {
@@ -107,18 +127,18 @@
 .register__pounds-abbreviation {
   position: absolute;
   top: 52px;
-  left: 57px;
-  font-size: 14px;
+  left: 59px;
+  font-size: 12px;
 }
 
 .register__ounces-abbreviation {
   position: absolute;
   top: 52px;
   left: 152px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
-.register__inputs_weight-type {
+.register__inputs_weight-units {
   width: 125px;
   -webkit-appearance: auto;
 }
@@ -162,6 +182,14 @@
     margin: 0;
   }
 
+  .register__title {
+    font-size: 14px;
+  }
+
+  .register__description {
+    font-size: 12px;
+  }
+
   .register__fieldset {
     width: fit-content;
   }
@@ -176,7 +204,7 @@
   }
 
   .register__label {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .register__label_fname {
@@ -189,30 +217,33 @@
 
   .register__inputs {
     font-size: 12px;
+    height: 40px;
   }
 
-  .register__inputs_kilograms-pounds {
-    width: 77.5px;
-  }
-
-  .register__inputs_ounces {
-    width: 77.5px;
+  .register__inputs_weight {
+    width: 73px;
   }
 
   .register__pounds-abbreviation {
-    top: 52px;
-    left: 57px;
+    top: 43px;
+    left: 55px;
     font-size: 10px;
+    text-align: right;
+  }
+
+  .register__inputs_ounces {
+    width: 73px;
   }
 
   .register__ounces-abbreviation {
-    top: 52px;
-    left: 152px;
+    top: 43px;
+    left: 140px;
     font-size: 10px;
+    text-align: right;
   }
 
-  .register__inputs_weight-type {
-    width: 105px;
+  .register__inputs_weight-units {
+    width: 106px;
   }
 
   .register__inputs_birthday {
@@ -220,14 +251,21 @@
     padding: 5px 10px;
   }
 
+  .register__calendar-icon {
+    top: 29.5px;
+    right: 12.5px;
+  }
+
   .register__btn {
     margin: 0;
+    font-size: 12px;
+    height: 40px;
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 390px) {
   .register__container {
-    padding: 30px 20px 0;
+    padding: 30px 24px 0;
   }
 
   .register__label_fname {

@@ -8,9 +8,9 @@
 
 .form-weight__inputs {
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
-  padding: 0 20px;
+  height: 45px;
   border-radius: 5px;
   border-color: transparent;
   background-color: white;
@@ -42,8 +42,7 @@
 
 .form-weight__date {
   width: 135px;
-  height: 40px;
-  padding: 0 0 0 7px;
+  padding: 8px;
   text-align: left;
 }
 
@@ -55,8 +54,8 @@
 .form-weight__calendar-icon {
   position: absolute;
   width: 15px;
-  top: 10px;
-  right: 8px;
+  top: 13px;
+  right: 12px;
   pointer-events: none;
 }
 
@@ -66,19 +65,18 @@
 
 .form-weight__pounds {
   width: 80px;
-  height: 40px;
 }
 
 .form-weight__pounds_focus:focus {
-  border-color: red;
+  border: solid 2px red;
   outline: none;
 }
 
 .form-weight__pounds-abbreviation {
-  font-size: 14px;
+  font-size: 12px;
   color: #297fd0;
   position: absolute;
-  top: 20px;
+  top: 30px;
   right: 4px;
   pointer-events: none;
 }
@@ -89,21 +87,28 @@
 
 .form-weight__ounces {
   width: 80px;
-  height: 40px;
 }
 
 .form-weight__ounces-abbreviation {
-  font-size: 14px;
+  font-size: 12px;
   color: #297fd0;
   position: absolute;
-  top: 20px;
+  top: 30px;
   right: 4px;
   pointer-events: none;
+}
+
+.form-weight__inputs_weight-units {
+  -webkit-appearance: auto;
+  width: 106px;
+  padding: 0 5px;
+  text-align: left;
 }
 
 .form-weight__button {
   width: 70px;
   border-radius: 5px;
+  font-size: 14px;
   border-color: transparent;
   color: #e6f0fd;
   background-color: #297fd0;
@@ -112,10 +117,13 @@
 
 @media screen and (max-width: 640px) {
   .form-weight__fieldset {
+    max-width: 320px;
+    margin: 0 auto;
     justify-content: center;
+    flex-wrap: wrap;
   }
   .form-weight__inputs {
-    height: 35px;
+    height: 40px;
     font-size: 12px;
   }
 
@@ -129,27 +137,32 @@
   }
 
   .form-weight__pounds {
-    width: 16.5vw;
-    padding: 15px;
+    max-width: 93px;
+    width: 28vw;
   }
 
   .form-weight__pounds-abbreviation {
-    top: 21px;
+    top: 25px;
     font-size: 10px;
   }
 
   .form-weight__ounces {
-    width: 16.5vw;
-    padding: 15px;
+    max-width: 93px;
+    width: 28vw;
   }
 
   .form-weight__ounces-abbreviation {
-    top: 21px;
+    top: 25px;
     font-size: 10px;
   }
 
+  .form-weight__inputs_weight-units {
+    width: 110px;
+  }
+
   .form-weight__button {
-    width: 65px;
+    width: 110px;
+    height: 40px;
     font-size: 12px;
   }
 }

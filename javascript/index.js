@@ -3,6 +3,7 @@ const formBtn = document.querySelector(".form-weight__button");
 const toggleBtn = document.querySelector(".toggle-btn");
 const editBtn = document.querySelector(".weight-info__edit-btn");
 const alert = document.querySelector(".alert__text");
+
 window.addEventListener("DOMContentLoaded", setupItems);
 navButton.addEventListener("click", openForm);
 toggleBtn.addEventListener("click", openForm);
@@ -46,7 +47,7 @@ function closeForm() {
 function submit() {
   let items = getLocalStorage();
   const fullName = items[0].name;
-  const birthday = new Date(items[0].birthday);
+  const birthday = new Date(items[0].date);
   const bornWeightOunces = items[0].pounds * 16 + items[0].ounces;
   if (new Date(date.value + "T00:00").getTime() < birthday.getTime()) {
     displayAlert("Measurement cannot be earlier than birth!", "danger");
@@ -89,7 +90,7 @@ function submit() {
       editLocalStorage(
         fullName,
         days,
-        birthday,
+
         selectedDate.toISOString(),
         poundsValue,
         ouncesValue,
@@ -131,7 +132,7 @@ function submit() {
     setLocalStorage(
       fullName,
       days,
-      birthday,
+
       selectedDate.toISOString(),
       poundsValue,
       ouncesValue,
@@ -174,7 +175,7 @@ function submit() {
       editLocalStorage(
         fullName,
         days,
-        birthday,
+
         selectedDate.toISOString(),
         poundsValue,
         0,
@@ -216,7 +217,7 @@ function submit() {
     createItem(
       fullName,
       days,
-      birthday,
+
       selectedDate,
       0,
       kilograms,
@@ -225,7 +226,7 @@ function submit() {
     setLocalStorage(
       fullName,
       days,
-      birthday,
+
       selectedDate,
       poundsValue,
       0,
@@ -269,7 +270,7 @@ function submit() {
     editLocalStorage(
       fullName,
       days,
-      birthday,
+
       selectedDate.toISOString(),
       poundsValue,
       ouncesValue,
@@ -312,7 +313,7 @@ function submit() {
   setLocalStorage(
     fullName,
     days,
-    birthday,
+
     selectedDate.toISOString(),
     parseFloat(pounds.value),
     parseFloat(ounces.value),
@@ -342,9 +343,20 @@ function submit() {
 }
 
 function resetForm(e) {
-  const newDate = new Date().toISOString().slice(0, 10);
+  const date = new Date();
+  var year = date.getFullYear();
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  if (day.toString().length < 2) {
+    day = "0" + day;
+  }
+  if (month.toString().length < 2) {
+    month = "0" + month;
+  }
+  var currentDate = year + "-" + month + "-" + day;
+
   document.querySelector(".form-weight__button").innerHTML = "Submit";
-  document.getElementById("date").value = newDate;
+  document.getElementById("date").value = currentDate;
   document.getElementById("pounds").value = "";
   document.getElementById("ounces").value = "";
 }
@@ -410,112 +422,13 @@ function TrackBtnSelect(e) {
 }
 
 function setupItems() {
-  const register = document.querySelector(".register");
   const navBtn = document.querySelector(".nav__button");
   const toggleBtn = document.querySelector(".toggle-btn");
   const weightInfo = document.querySelector(".weight-info");
   const dailyTracker = document.querySelector(".daily-tracker");
   var items = getLocalStorage();
   if (items.length === 0) {
-    const element = document.createElement("div");
-    element.classList.add("register__container");
-    element.innerHTML = `
-            <h2 class="register__title">Register New Born</h2>
-            <p class="register__description">
-              Register new born to start your daily weight tracking!
-            </p>
-            <form action="" class="register__form">
-              <fieldset class="register__fieldset">
-                <div class="register__name">
-                  <label
-                    for="fname"
-                    class="register__label register__label_fname"
-                  >
-                    First Name*
-                    <input
-                      type="text"
-                      id="fname"
-                      class="register__inputs register__inputs_fname"
-                      placeholder="First Name"
-                    />
-                  </label>
-                  <label
-                    for="lname"
-                    class="register__label register__label_lname"
-                  >
-                    Last Name*
-                    <input
-                      type="text"
-                      id="lname"
-                      class="register__inputs register__inputs_lname"
-                      placeholder="Last Name"
-                    />
-                  </label>
-                </div>
-                <div class="register__info-container">
-                  <label
-                    for="weight"
-                    class="register__label register__label_weight"
-                  >
-                    Weight*
-                    <div class="register__weight-container">
-                      <input
-                        id="weight"
-                        type="number"
-                        name="weight"
-                        class="register__inputs register__inputs_kilograms-pounds"
-                        placeholder="---"
-                      />
-                      <span class="register__pounds-abbreviation"
-                  >lbs</span
-                >
-                      <input
-                        type="number"
-                        id="ounces"
-                        name="ounces"
-                        class="register__inputs register__inputs_ounces"
-                        placeholder="---"
-                      />
-                      <span class="register__ounces-abbreviation"
-                  >oz</span
-                >
-                      <select
-                        id="type"
-                        class="register__inputs register__inputs_weight-type"
-                        name="type"
-                      >
-                        <option value="pounds">Pounds</option>
-                        <option value="kilograms">Kilograms</option>
-                      </select>
-                    </div>
-                  </label>
-                  <label
-  for="birthday"
-  class="register__label register__label_birthday"
->
-  Birthday*
-  <input
-    type="date"
-    id="birthday"
-    name="birthday"
-    class="register__inputs register__inputs_birthday"
-    value="2024-10-19"
-  />
-  <span
-><img
-  src="./images/calendar-regular.svg"
-  alt=""
-  class="register__calendar-icon" /></span>
-</label>
-<button type="button" class="register__btn">Submit</button>
-                  </div>
-              </fieldset>
-            </form>
-`;
-    register.appendChild(element);
-    element
-      .querySelector(".register__btn")
-      .addEventListener("click", registerSubmit);
+    setupRegisterForm();
     return;
   }
   navBtn.classList.add("nav__button_show");
@@ -576,7 +489,7 @@ function displayItem(index) {
   displayWeightDate.innerHTML =
     "Weight Date " + new Date(items[index].date).toLocaleDateString();
   displaybirthday.innerHTML =
-    "Birthday " + new Date(items[index].birthday).toLocaleDateString();
+    "Birthday " + new Date(items[0].date).toLocaleDateString();
   displayDays.innerHTML = items[index].days;
   displayPoundsOunces.innerHTML =
     items[index].pounds + " lbs " + items[index].ounces + " oz";
@@ -611,7 +524,7 @@ function displayAlert(text, action) {
 function setLocalStorage(
   name,
   days,
-  birthday,
+
   date,
   pounds,
   ounces,
@@ -623,7 +536,7 @@ function setLocalStorage(
   const newItem = {
     name,
     days,
-    birthday,
+
     date,
     pounds,
     ounces,
@@ -642,7 +555,7 @@ function setLocalStorage(
 function editLocalStorage(
   name,
   days,
-  birthday,
+
   date,
   pounds,
   ounces,
@@ -678,7 +591,6 @@ function editLocalStorage(
       ? {
           name: name,
           days: days,
-          birthday: birthday,
           date: date,
           pounds: pounds,
           ounces: ounces,

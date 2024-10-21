@@ -21,6 +21,7 @@
 }
 
 .weight-info__name {
+  text-transform: capitalize;
   margin: 0 0 5px 0;
   color: #0d5297;
   font-size: 26px;

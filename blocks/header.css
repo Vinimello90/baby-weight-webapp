@@ -1,6 +1,6 @@
 .header__form {
   position: absolute;
-  top: 65.81px;
+  top: 62px;
   right: 12px;
   border-radius: 10px;
   height: 0;
@@ -12,8 +12,8 @@
 }
 
 .header__form_show {
-  width: 402px;
-  height: 56px;
+  width: 515px;
+  height: 61px;
 }
 
 @media screen and (max-width: 640px) {
@@ -30,6 +30,6 @@
 
   .header__form_show {
     transform: translateY(0);
-    height: 51px;
+    height: 103px;
   }
 }
