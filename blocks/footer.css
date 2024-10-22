@@ -5,8 +5,18 @@
 
 .footer__copyright {
   color: #e6f0fd;
-  font-size: 12px;
-  padding: 8px 0;
+  font-size: 14px;
+  padding: 15px 0;
   text-align: center;
   margin: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .footer__copyright {
+    color: #e6f0fd;
+    font-size: 12px;
+    padding: 8px 0;
+    text-align: center;
+    margin: 0;
+  }
 }

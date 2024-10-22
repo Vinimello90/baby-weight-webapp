@@ -1,10 +1,8 @@
-var data = [];
-
 function getChart() {
   const items = getLocalStorage();
-  data = [];
+  var data = [];
   items.forEach((item) => {
-    const arrayChart = [`${item.days} Day`, item.percent, -7, -10];
+    const arrayChart = [`${item.days} Day`, item.percentage, -7, -10];
     data.push(arrayChart);
   });
 

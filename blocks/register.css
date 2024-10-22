@@ -114,6 +114,13 @@
   outline: none;
 }
 
+.register__pounds-abbreviation {
+  position: absolute;
+  top: 50px;
+  left: 59px;
+  font-size: 12px;
+}
+
 .register__inputs_ounces {
   width: 80px;
   text-align: center;
@@ -124,16 +131,9 @@
   color: #297fd0;
 }
 
-.register__pounds-abbreviation {
-  position: absolute;
-  top: 52px;
-  left: 59px;
-  font-size: 12px;
-}
-
 .register__ounces-abbreviation {
   position: absolute;
-  top: 52px;
+  top: 50px;
   left: 152px;
   font-size: 12px;
 }

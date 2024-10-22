@@ -1,7 +1,11 @@
+const selectUnit = document.querySelector(".form-weight__inputs_weight-units");
+selectUnit.addEventListener("change", changeUnits);
+
 function setupRegisterForm() {
   const register = document.querySelector(".register");
   const element = document.createElement("div");
   element.classList.add("register__container");
+
   element.innerHTML = `
             <h2 class="register__title">Register New Born</h2>
             <p class="register__description">
@@ -116,16 +120,37 @@ function setupRegisterForm() {
   element.querySelector(".register__inputs_birthday").value = currentDate;
 }
 
-function changeUnits() {
-  const weightUnits = units.value;
+function changeUnits(e) {
+  console.log(e.target.id);
+  const weightUnits =
+    e.target.id === "form_weight_units" ? form_weight_units.value : units.value;
+
   switch (weightUnits) {
     case "pounds":
+      if (e.target.id === "form_weight_units") {
+        document.querySelector(".form-weight__pounds-abbreviation").innerHTML =
+          "lbs";
+        document.querySelector(".form-weight__ounces-abbreviation").innerHTML =
+          "oz";
+        document.getElementById("ounces").disabled = false;
+        resetForm();
+        return;
+      }
       document.querySelector(".register__pounds-abbreviation").innerHTML =
         "lbs";
       document.querySelector(".register__ounces-abbreviation").innerHTML = "oz";
       document.getElementById("ouncesWeight").disabled = false;
       break;
     case "kilograms":
+      if (e.target.id === "form_weight_units") {
+        document.querySelector(".form-weight__pounds-abbreviation").innerHTML =
+          "kg";
+        document.querySelector(".form-weight__ounces-abbreviation").innerHTML =
+          "";
+        document.getElementById("ounces").disabled = true;
+        resetForm();
+        return;
+      }
       document.querySelector(".register__pounds-abbreviation").innerHTML = "kg";
       document.querySelector(".register__ounces-abbreviation").innerHTML = "";
       document.getElementById("ouncesWeight").disabled = true;
@@ -135,11 +160,11 @@ function changeUnits() {
 
 function registerSubmit() {
   const fullName = fname.value + " " + lname.value;
-  const newWeightDate = new Date(birthday.value + "T00:00");
-  var percentChange = 0;
+  const selectedDate = new Date(birthday.value + "T00:00");
+  var percentageChange = 0;
   var days = 0;
   var weightsValues;
-  console.log(units.value);
+
   if (!fname.value || !lname.value) {
     !fname.value
       ? displayAlert("First name missing!", "danger")
@@ -180,53 +205,79 @@ function registerSubmit() {
   setLocalStorage(
     fullName,
     days,
-    newWeightDate,
+    selectedDate,
     weightsValues.pounds,
     weightsValues.ounces,
     weightsValues.kilograms,
-    percentChange
+    weightsValues.percentage
   );
   document.querySelector(".register").remove();
   setupItems();
 }
 
 function calculatePounds(pounds, ounces) {
+  const items = getLocalStorage();
+  var poundsValue;
+  var ouncesValue;
+  var totalOunces;
+  var kilograms;
   if (pounds - Math.floor(pounds) !== 0) {
-    const poundsValue = Math.floor(pounds);
-    let ouncesValue = (pounds % 1) * 16;
-    const totalOunces = poundsValue * 16 + ouncesValue;
+    poundsValue = Math.floor(pounds);
+    ouncesValue = (pounds % 1) * 16;
+    totalOunces = poundsValue * 16 + ouncesValue;
     ouncesValue =
       ouncesValue.toString().length > 4
         ? ouncesValue.toFixed(2)
         : (pounds % 1) * 16;
-    let kilograms = totalOunces * 0.0283495;
+    kilograms = totalOunces * 0.0283495;
     kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
-    return { pounds: poundsValue, ounces: ouncesValue, kilograms: kilograms };
-  }
-  if (pounds && !ounces) {
-    const poundsValue = pounds;
-    const totalOunces = poundsValue * 16;
-    let kilograms = totalOunces * 0.0283495;
+  } else if (pounds && !ounces) {
+    poundsValue = pounds;
+    ouncesValue = 0;
+    totalOunces = poundsValue * 16;
+    kilograms = totalOunces * 0.0283495;
     kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
-    return { pounds: poundsValue, ounces: 0, kilograms: kilograms };
-  }
-  if (pounds && ounces) {
-    const poundsValue = parseFloat(pounds);
-    const ouncesValue = parseFloat(ounces);
-    const totalOunces = poundsValue * 16 + ouncesValue;
-    let kilograms = totalOunces * 0.0283495;
+  } else if (pounds && ounces) {
+    poundsValue = parseFloat(pounds);
+    ouncesValue = parseFloat(ounces);
+    totalOunces = poundsValue * 16 + ouncesValue;
+    kilograms = totalOunces * 0.0283495;
     kilograms = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
-    return { pounds: poundsValue, ounces: ouncesValue, kilograms: kilograms };
   }
+  const bornWeightOunces =
+    items.length === 0 ? totalOunces : items[0].pounds * 16 + items[0].ounces;
+  let percentage = ((totalOunces - bornWeightOunces) / bornWeightOunces) * 100;
+  percentage % 1 !== 0
+    ? (percentage =
+        percentage % 1 < 0.01 ? Math.floor(percentage) : percentage.toFixed(2))
+    : (percentage = percentage);
+  return {
+    pounds: poundsValue,
+    ounces: ouncesValue,
+    kilograms: kilograms,
+    percentage: percentage,
+  };
 }
 
 function calculateKilograms(kilograms) {
+  const items = getLocalStorage();
   const kilgramsValue = kilograms.toString().match(/^-?\d+(?:\.\d{0,3})?/)[0];
   const poundsValue = Math.floor(kilograms / 0.453592);
-  const ouncesValue = ((kilograms / 0.453592) % 1) * 16;
+  let ouncesValue = ((kilograms / 0.453592) % 1) * 16;
+  const totalOunces = poundsValue * 16 + ouncesValue;
+  const bornWeightOunces =
+    items.length === 0 ? totalOunces : items[0].pounds * 16 + items[0].ounces;
+  let percentage = ((totalOunces - bornWeightOunces) / bornWeightOunces) * 100;
+  percentage.toString().length > 1
+    ? (percentage = percentage.toFixed(2))
+    : (percentage = percentage);
+  ouncesValue.toString().length > 1
+    ? (ouncesValue = ouncesValue.toFixed(2))
+    : (ouncesValue = ouncesValue);
   return {
     pounds: poundsValue,
-    ounces: Math.round(ouncesValue).toFixed(2),
+    ounces: ouncesValue,
     kilograms: kilgramsValue,
+    percentage: percentage,
   };
 }
