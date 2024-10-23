@@ -160,6 +160,7 @@ function editItem(e) {
 
   const index = items.findIndex((item) => item.days === days);
   openForm();
+  console.log(new Date(items[index].date));
   document.getElementById("date").value = new Date(items[index].date)
     .toISOString()
     .slice(0, 10);
@@ -180,7 +181,7 @@ function calculateDays() {
     return item.date === datemiliseconds.toISOString()
       ? {
           name: item.name,
-          days: days,
+          days: Math.floor(days),
           date: item.date,
           pounds: item.pounds,
           ounces: item.ounces,
