@@ -181,7 +181,7 @@ function calculateDays() {
     return item.date === datemiliseconds.toISOString()
       ? {
           name: item.name,
-          days: Math.floor(days),
+          days: Math.round(days),
           date: item.date,
           pounds: item.pounds,
           ounces: item.ounces,
