@@ -249,11 +249,11 @@ function setupItems() {
   const weightInfo = document.querySelector(".weight-info");
   const dailyTracker = document.querySelector(".daily-tracker");
   var items = getLocalStorage();
-  calculateDays();
   if (items.length === 0) {
     setupRegisterForm();
     return;
   }
+  calculateDays();
   navBtn.classList.add("nav__button_show");
   toggleBtn.classList.add("toggle-btn_show");
   weightInfo.classList.add("weight-info_show");
