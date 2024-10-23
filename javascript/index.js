@@ -223,15 +223,8 @@ function createItem(days, date, pounds, ounces, kilograms, percentage) {
 
 function TrackBtnSelect(e) {
   const items = getLocalStorage();
-  var selectedDate = e.target.innerHTML;
-  selectedDate =
-    selectedDate.substring(6, 10) +
-    "-" +
-    selectedDate.substring(3, 5) +
-    "-" +
-    selectedDate.substring(0, 2) +
-    "T03:00:00.000Z";
-  const index = items.findIndex((item) => item.date === selectedDate);
+  var selectedDate = e.target.parentNode.parentNode.children[0].innerHTML;
+  const index = items.findIndex((item) => item.days === parseInt(selectedDate));
   displayItem(index);
   document.querySelectorAll(".track-table__rows").forEach((item) => {
     if (item.classList.contains("track-table__rows_selected")) {
@@ -286,6 +279,7 @@ function setupItems() {
 
 function displayItem(index) {
   const items = getLocalStorage();
+  console.log(items[index]);
   fullName = items[index].name;
   const displayName = document.querySelector(".weight-info__name");
   const displayWeightDate = document.querySelectorAll(".weight-info__date")[0];
