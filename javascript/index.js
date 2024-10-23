@@ -59,14 +59,14 @@ function submit() {
   var ouncesValue = parseFloat(ounces.value);
   var kilogramsValue = poundsValue;
   console.log(index);
-  if (index > -1) {
+  if (index > -1 && !edit) {
     displayAlert("Date is already in use!", "danger");
     document.getElementById("date").classList.add("form-weight__date_focus");
     document.getElementById("date").focus();
     return;
   }
   console.log(selectedDate.getTime() < birthday.getTime());
-  if (selectedDate.getTime() < birthday.getTime() && edit === false) {
+  if (selectedDate.getTime() < birthday.getTime() && !edit) {
     displayAlert("Additional measurement must be after birthday", "danger");
     document.getElementById("date").classList.add("form-weight__date_focus");
     document.getElementById("date").focus();
