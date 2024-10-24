@@ -61,7 +61,13 @@ function submit() {
   var ouncesValue = parseFloat(ounces.value);
   var kilogramsValue = poundsValue;
   console.log(index);
-  if (index > -1 && !edit) {
+  if (
+    (index > -1 && !edit) ||
+    (index > -1 &&
+      parseInt(displayedDays) === 0 &&
+      selectedDate.getTime() !== birthday.getTime() &&
+      edit)
+  ) {
     displayAlert("Date is already in use!", "danger");
     document.getElementById("date").classList.add("form-weight__date_focus");
     document.getElementById("date").focus();
@@ -78,6 +84,7 @@ function submit() {
     document.getElementById("date").focus();
     return;
   }
+
   if (!poundsValue || !kilogramsValue) {
     displayAlert("No weight was specified!", "danger");
     document
