@@ -52,6 +52,8 @@ function submit() {
   const birthday = new Date(items[0].date);
   const days =
     (selectedDate.getTime() - birthday.getTime()) / 1000 / 60 / 60 / 24;
+  const displayedDays =
+    document.querySelector(".info-column_days").children[1].innerHTML;
   var index = items.findIndex(
     (item) => item.date === selectedDate.toISOString()
   );
@@ -65,8 +67,12 @@ function submit() {
     document.getElementById("date").focus();
     return;
   }
-  console.log(selectedDate.getTime() < birthday.getTime());
-  if (selectedDate.getTime() < birthday.getTime() && !edit) {
+  if (
+    (selectedDate.getTime() <= birthday.getTime() && !edit) ||
+    (selectedDate.getTime() <= birthday.getTime() &&
+      parseInt(displayedDays) !== 0 &&
+      edit)
+  ) {
     displayAlert("Additional measurement must be after birthday", "danger");
     document.getElementById("date").classList.add("form-weight__date_focus");
     document.getElementById("date").focus();
@@ -199,6 +205,31 @@ function calculateDays() {
   localStorage.setItem("newborn", JSON.stringify(items));
 }
 
+function calculatePercent() {
+  var items = getLocalStorage();
+  const birthWeight = items[0].pounds * 16 + items[0].ounces;
+  items = items.map((item) => {
+    const itemWeight = item.pounds * 16 + item.ounces;
+    var percentage = ((itemWeight - birthWeight) / birthWeight) * 100;
+    percentage % 1 !== 0
+      ? (percentage =
+          percentage % 1 < 0.01
+            ? Math.floor(percentage)
+            : percentage.toFixed(2))
+      : (percentage = percentage);
+    return {
+      name: item.name,
+      days: item.days,
+      date: item.date,
+      pounds: item.pounds,
+      ounces: item.ounces,
+      kilograms: item.kilograms,
+      percentage: percentage,
+    };
+  });
+  localStorage.setItem("newborn", JSON.stringify(items));
+}
+
 function createItem(days, date, pounds, ounces, kilograms, percentage) {
   const itemList = document.getElementsByTagName("tbody")[0];
   const element = document.createElement("tr");
@@ -248,6 +279,7 @@ function setupItems() {
     return;
   }
   calculateDays();
+  calculatePercent();
   navBtn.classList.add("nav__button_show");
   toggleBtn.classList.add("toggle-btn_show");
   weightInfo.classList.add("weight-info_show");
@@ -390,6 +422,7 @@ function editLocalStorage(
   );
   localStorage.setItem("newborn", JSON.stringify(items));
   calculateDays();
+  calculatePercent();
 }
 
 function getLocalStorage() {
