@@ -50,8 +50,9 @@ function submit() {
   const fullName = items[0].name;
   const selectedDate = new Date(date.value + "T00:00");
   const birthday = new Date(items[0].date);
-  const days =
+  let days =
     (selectedDate.getTime() - birthday.getTime()) / 1000 / 60 / 60 / 24;
+  days = Math.round(days);
   const displayedDays =
     document.querySelector(".info-column_days").children[1].innerHTML;
   var index = items.findIndex(
@@ -60,7 +61,6 @@ function submit() {
   var poundsValue = parseFloat(pounds.value);
   var ouncesValue = parseFloat(ounces.value);
   var kilogramsValue = poundsValue;
-  console.log(index);
   if (
     (index > -1 && !edit) ||
     (index > -1 &&
@@ -173,7 +173,6 @@ function editItem(e) {
 
   const index = items.findIndex((item) => item.days === days);
   openForm();
-  console.log(new Date(items[index].date));
   document.getElementById("date").value = new Date(items[index].date)
     .toISOString()
     .slice(0, 10);
@@ -190,7 +189,6 @@ function calculateDays() {
     const datemiliseconds = new Date(item.date);
     const days =
       (datemiliseconds.getTime() - birthday.getTime()) / 1000 / 60 / 60 / 24;
-
     return item.date === datemiliseconds.toISOString()
       ? {
           name: item.name,
@@ -208,7 +206,6 @@ function calculateDays() {
       (new Date(a.date).getTime() || -Infinity) -
       (new Date(b.date).getTime() || -Infinity)
   );
-  console.log(items);
   localStorage.setItem("newborn", JSON.stringify(items));
 }
 
@@ -318,7 +315,6 @@ function setupItems() {
 
 function displayItem(index) {
   const items = getLocalStorage();
-  console.log(items[index]);
   fullName = items[index].name;
   const displayName = document.querySelector(".weight-info__name");
   const displayWeightDate = document.querySelectorAll(".weight-info__date")[0];

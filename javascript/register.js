@@ -121,7 +121,6 @@ function setupRegisterForm() {
 }
 
 function changeUnits(e) {
-  console.log(e.target.id);
   const weightUnits =
     e.target.id === "form_weight_units" ? form_weight_units.value : units.value;
 
